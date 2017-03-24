@@ -1,0 +1,46 @@
+管理员权限运行
+
+0 . 需要设置表示符：
+git config  --global user.name 'kerwin'
+------------------------回车--------分割线-----------------------------
+git config  --global user.email 'kerwin@163.com'
+
+
+
+
+1. git clone  https://github.com/****/myGitHubGit.git 用这种方式clone 出来的 git项目 每次push 时都要输入
+用户名和密码
+
+2. 生成私有key 以及公有key （公有copy到github上面）
+（1）生成ssh-keygen -t rsa -C "your_email@youremail.com"  
+
+     测试ssh -T git@github.com
+（2）更改代码传输方式为ssh （如果是https ，还是需要继续输入用户名和密码）；
+     git remote remove origin
+     git remote add origin git@github.com:Username/Your_Repo_Name.git
+
+    或者clone 时 ，用git clone git@github.com:***/myGitHubGit.git
+
+这样就不需要输入用户名和密码了。
+
+
+
+3. 对于 kerwin 创建的github 项目 只有kerwin 账号密码可以提交修改。
+在这myl 想要使用提交修改这个项目 ， 
+
+   让kerwin 把 myl 添加为贡献者，myl 有权限读写
+
+
+
+小乌龟不需要输入密码的方法：
+（1）
+当你配置好git后，在C:\Users\Administrator 目录下有一个 .gitconfig 的文件，里面会有你先前配好的name 和email，只需在下面加一行
+
+[credential]
+
+helper = store 
+
+
+下次再输入用户名 和密码 时，git就会记住，从而在C:\Users\Administrator 目录下形成一个 .git-credentials 文件，里面就是保存的你的用户名和密码（注意是明文存储！！！）。
+
+这样以后再连接时，就不用再输入用户名和密码了！

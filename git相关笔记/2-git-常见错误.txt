@@ -1,0 +1,12 @@
+1. 少空格情况 ， git commit-m (错误)
+2. 提交必须git add  ,然后 git commit 
+3. github 邮箱必选验证
+4. 第一次提交时， 出错错误， 要告诉git 工具 你是谁， 要敲代码，
+git config  --global user.name 'kerwin'
+------------------------回车--------分割线-----------------------------
+git config  --global user.email 'kerwin@163.com'
+5. 千万不要从github 中央代码仓库 随便删东西 ，这样会引发全部组员的代码冲突问题
+
+6. 每次敲完回车之后， 看下是否有以下关键字 “”fatal，  ，  error “” 错误
+
+7. 在命令行中 复制 粘贴 ，不要用 ctrl+c  不要用ctrl+v  , 用鼠标右键赋值 粘贴
