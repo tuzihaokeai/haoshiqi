@@ -26,7 +26,7 @@
       //34a7c39 HEAD@{1}: commit: 2222222
    b. git reset --hard 34a7c39
 
-5. git status ,查看本地代码是否修改的，
+5. git status ,查看本地代码是否修改的
 
 
 
