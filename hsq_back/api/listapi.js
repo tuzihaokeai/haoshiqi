@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2017/3/25 0025.
- */
+
 var express = require('express');
 var router = express.Router();
 var spider = require("./spider");
