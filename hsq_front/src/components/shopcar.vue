@@ -23,10 +23,17 @@
 	#shopcar{
 		display: flex;
 		flex-direction: column;
+		text-align: center;
 	}
 	.Header{
 		height:44px;
 		color: #914e07;
 		background: yellow;
 	}
+	.Header .edit{
+		font-size: 18px;
+		position: absolute;
+		right:0;
+	}
+	
 </style>
