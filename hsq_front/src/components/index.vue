@@ -14,7 +14,7 @@
 	</div>
 </template>
 <script>
-import router from '../router';
+import router from '../router'
 import css from '../bootstrap/css/bootstrap.css'
 
 	export default {
