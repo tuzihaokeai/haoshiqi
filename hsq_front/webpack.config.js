@@ -19,6 +19,7 @@ module.exports = {
           // other vue-loader options go here
         }
       },
+      
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -30,6 +31,14 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'//添加对样式表的处理,内联样式
       }
     ]
   },
