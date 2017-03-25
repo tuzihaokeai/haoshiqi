@@ -5,18 +5,33 @@
       <div class="portal-location">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
     	</div>
     	<div class="banner"></div>
+    	<div class="protal-icon">
+    		<ul>
+    		<li v-for="(data,index) in iconlist"><img src="{{}}"/><p>{{}}</p></li>
+    		</ul>
+    	</div>
 		<router-view></router-view>
 	</div>
 </template>
 <script>
+import router from '../router';
 import css from '../bootstrap/css/bootstrap.css'
 
 	export default {
 		data(){
 			return{
-				
+				iconlist:[]
 			}
-		}
+		},
+		mounted(){
+			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
+			console.log(res.body)
+			//this.iconlist=res.body.data.subButtonList;
+
+		},error=>{
+			
+		})
+	}
 	}
 </script>
 <style scoped>
