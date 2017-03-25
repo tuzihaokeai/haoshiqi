@@ -25,6 +25,7 @@ import css from '../bootstrap/css/bootstrap.css'
 		},
 		mounted(){
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
+			
 			console.log(res.body)
 			//this.iconlist=res.body.data.subButtonList;
 
