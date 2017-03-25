@@ -6,14 +6,18 @@
 </template>
 <script>
 
-
+import router from "../router";
 	export default {
 		data(){
 			return{
 				
 			}
-		}
+		},
+		mounted(){}
+
+
 	}
+
 </script>
 <style scoped>
 	
