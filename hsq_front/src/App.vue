@@ -52,9 +52,9 @@ export default {
       left:0px;
     }
     .footer li{
-      line-height: 80px;
-      font-size: 30px;
-      height: 80px;
+      line-height: 44px;
+      font-size: 12px;
+      height: 44px;
       flex:1;
       text-align: center;
       background: gray;

@@ -1,6 +1,9 @@
 <template>
 	<div id="shopcar">
-		shopcar
+		<div class="Header">
+			购物车
+			<span class="edit">编辑</span>
+		</div>
 	</div>
 </template>
 <script>
@@ -13,5 +16,17 @@
 	}
 </script>
 <style scoped>
-	
+*{
+	padding:0;
+	margin:0;
+}
+	#shopcar{
+		display: flex;
+		flex-direction: column;
+	}
+	.Header{
+		height:44px;
+		color: #914e07;
+		background: yellow;
+	}
 </style>
