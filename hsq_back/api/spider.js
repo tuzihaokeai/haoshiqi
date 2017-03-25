@@ -1,10 +1,10 @@
 
-var https = require("https"); //https 请求
+var http = require("http"); //http 请求
 
 function request(path,callback){
     var options = {
-        hostname: 'mainsite-restapi.ele.me',
-        port: 443, //端口号 https默认端口 443， http默认的端口号是80
+        hostname: 'm.haoshiqi.net',
+        port: 80, //端口号 https默认端口 443， http默认的端口号是80
         path: path,
         method: 'GET'
     };
