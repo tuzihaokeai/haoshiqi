@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var homeapi = require('./api/homeapi');
 var detailapi = require('./api/detailapi');
-var listapi = require('./api/listlapi');
+var listapi = require('./api/listapi');
 
 var cors = require("cors")
 
