@@ -12,7 +12,7 @@
     	<router-link to="/index" tag="li" active-class="kerwinAcitive">首页</router-link>
     	<router-link to="/category" tag="li" active-class="kerwinAcitive">分类</router-link>
     	<router-link to="/shopcar" tag="li" active-class="kerwinAcitive">购物车</router-link>
-    	<router-link to="/mine" tag="li" active-class="kerwinAcitive">我的</router-link>
+    	<router-link to="/wode" tag="li" active-class="kerwinAcitive">我的</router-link>
     	
     </ul>
   </div>

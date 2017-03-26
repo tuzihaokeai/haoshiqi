@@ -74,6 +74,8 @@
 		</div>
 	</div>
 </template>
+
+
 <script>
 	export default {
 		data(){
@@ -83,6 +85,8 @@
 		}
 	}
 </script>
+
+
 <style scoped>
 html,body{
 	height:100%;
@@ -113,7 +117,7 @@ html,body{
 		top:0px
 	}
 	.content{
-		background: #E6E6E6;
+		background: #f8f8f8;
 		flex: 1;
 		
 		

@@ -5,7 +5,9 @@ import Index from "./components/index.vue";
 import List from "./components/list.vue"
 import Category from "./components/category.vue";
 import Shopcar from "./components/shopcar.vue";
+import Wode from "./components/wode.vue";
 import Mine from "./components/mine.vue";
+import UserInfo from "./components/userinfo.vue";
 import Detail from "./components/detail.vue";
 import CategoryList from "./components/categorylist.vue";
 import CategoryDetail from "./components/categorydetail.vue";
@@ -32,7 +34,15 @@ const routes = [
 		]
 	},
 	{path:"/shopcar",component:Shopcar},
-	{path:"/mine",component:Mine},
+	{
+		path:"/wode",
+		component:Wode,
+		redirect:"/wode/mine",
+		children:[
+			{path:"mine",component:Mine},
+			{path:"userinfo",component:UserInfo}
+		]
+	},
 	{path:"*",redirect:"/index"}
 ]
 
