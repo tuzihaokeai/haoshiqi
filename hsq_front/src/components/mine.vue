@@ -4,7 +4,7 @@
 			个人中心
 			
 		</div>
-		<div class="person">
+		<div class="person" @click="changePage()">
 			<img src="http://img.haoshiqi.net/avatar/avatar_default.png@120w_120h_90Q" />
 			<div class="tel">135845655</div>
 			<p class="addressmanage">账户、收货地址管理  ></p>
@@ -71,10 +71,21 @@
 	</div>
 </template>
 <script>
+
+import router from "../router"
 	export default {
 		data(){
 			return{
 				
+			}
+		},
+		mounted(){
+			
+		},
+		methods:{
+			changePage(){
+				console.log("pp")
+				router.push("/wode/userinfo")
 			}
 		}
 	}
