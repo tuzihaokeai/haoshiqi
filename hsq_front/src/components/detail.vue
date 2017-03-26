@@ -103,6 +103,16 @@
 				</li>
 			</ul>
 		</div>
+		<!------->
+		<div class="fixed_footer">
+		    <ul class="order-buy">
+		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:dodgerblue"></span>客服</li>
+		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏</li>
+		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>购物车</li>
+		      <li class="addshopcar">加入购物车</li>
+		    </ul>
+		</div>
+		<!------->
 	</div>
 </template>  
 
@@ -322,5 +332,48 @@
 	    display: inline-block;
 	    text-align: center;
 	    font-size: 18px;
-	}  
+	} 
+.fixed_footer{
+	background: #f1f1f1;
+	z-index: 100;
+	width: 100%;
+	height:44px;
+	position: fixed;
+	bottom: 40px;
+	left: 0;
+	text-align: center;
+	line-height: 44px;
+	box-shadow: 0 -3px 5px -1px rgba(0,0,0,.1);
+} 
+.order-buy{
+	list-style: none;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	box-sizing: content-box;
+}
+.minli{
+	flex: 1;
+	padding-top: 8px;
+    line-height: 14px;
+    font-size: 12px;
+    color: #959595;
+    background: #FFFFFF;
+    box-sizing: border-box;
+}
+.minli span{
+	display: block;
+	font-size: 16px;
+}
+.addshopcar{
+	flex: 2;
+	background: #f55;
+    color: #fff;
+    font-size: 20px;
+}
+.liAcitive{
+	color:white!important;
+    background:yellow!important;
+}
 </style>
