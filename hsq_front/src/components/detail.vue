@@ -3,6 +3,7 @@
 		<div class="Header">
 			<span class="back">返回</span>
 			商品详情
+			
 			<span></span>
 		</div>
 		<div class="img">
@@ -45,6 +46,8 @@
 		}
 	}
 </script>
+
+
 <style scoped>
 	#detail{
 		background: #f8f8f8;
