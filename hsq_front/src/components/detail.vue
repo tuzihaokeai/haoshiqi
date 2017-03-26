@@ -1,10 +1,10 @@
 <template>
 	<div id="detail">
 		<div class="Header">
-			<span class="back">返回</span>
+			<span class="back"  @click="backClick()">返回</span>
 			商品详情
 			
-			<span></span>
+			<span class="glyphicon glyphicon-home" aria-hidden="true" id="home" @click="homeClick()"></span>
 		</div>
 		<div class="img">
 			<img src="http://img.haoshiqi.net/merchantadmin/image20170321/mae0236bcbbb2ab581e44b759c8ed5a338@420w_420h_90Q.jpg" />
@@ -107,6 +107,7 @@
 </template>
 
 <script>
+	import router from "../router"
 	export default {
 		data(){
 			return{
@@ -116,6 +117,12 @@
 		methods:{
 			lichangeClick(index){
 				this.currentIndex=index
+			},
+			backClick(){
+				router.push("/category/categorydetail")
+			},
+			homeClick(){
+				router.push("/index")
 			}
 		}
 	}
@@ -304,5 +311,16 @@
 	 color: #acacac;
     font-size: 12px;
 }
-   
+#home{
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: block;
+		width: 44px;
+	    height: 44px;
+	    line-height: 44px;
+	    display: inline-block;
+	    text-align: center;
+	    font-size: 18px;
+	}  
 </style>

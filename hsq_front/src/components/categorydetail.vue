@@ -8,7 +8,7 @@
 		<!------->
 		<div class="list_div">
 			<ul class="list_ul">
-				<li class="list_li">
+				<li class="list_li" @click="handleChange()">
 					<div class="item">
 					  <div class="img">
 					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
@@ -183,6 +183,10 @@
 			},
 			homeClick(){
 				router.push("/index")
+			},
+			handleChange(){
+//				router.push(`/category/detail/${id}`)
+				router.push("/category/detail/:id")
 			}
 		}
 	}
@@ -301,7 +305,7 @@
 	.shopcar{
 		float: right;
 		position: absolute;
-	    right: 0;
+	    right: 3px;
 	    bottom: 0;
 	    width: 32px;
 	    height: 32px;
