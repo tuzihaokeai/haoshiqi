@@ -220,7 +220,7 @@ import css from '../bootstrap/css/bootstrap.css'
 	    border-radius: 50%;
 	    color: #fff;
 	    font-size: 16px;
-	    text-align: center;
+	    text-align: center; 
 	}
 	
 </style>
