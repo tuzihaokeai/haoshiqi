@@ -222,4 +222,5 @@ import css from '../bootstrap/css/bootstrap.css'
 	    font-size: 16px;
 	    text-align: center;
 	}
+	
 </style>
