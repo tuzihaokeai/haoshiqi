@@ -1,6 +1,6 @@
 <template>
 	<div id="category">
-		category
+	
 		<router-view></router-view>
 	</div>
 </template>
