@@ -31,9 +31,77 @@
 		
 		<div class="send">
 			<div class="sendaddress">
-				<p>送至:<span>上海市<i></i></span></p>
-				<span>岑商品马爱一件包邮</span>
+				<p>送至   : <span>上海市<i></i></span></p>
+				<span class="baoyou">岑商品马爱一件包邮</span>
 			</div>
+			<ul>
+				<li>
+					<span></span>
+					<p>正品保证</p>
+				</li>
+				<li>
+					<span></span>
+					<p>PICC承保</p>
+				</li>
+				<li>
+					<span></span>
+					<p>72小时内发货</p>
+				</li>
+				<li>
+					<span></span>
+					<p>售后保障</p>
+				</li>
+			</ul>
+		</div>
+		<div class="dian">
+			
+	      <img src="http://img.haoshiqi.net/merchantadmin/image20170313/ma581f1d5587df34d5f3214c0ba96e3106@200w_200h_90Q.jpg" alt="八鲜桥官方旗舰店">
+	      <div class="l">
+		      <h5>八鲜桥官方旗舰店</h5>
+		      <p>上海市&nbsp;上海市</p>
+	      </div>
+	      <span>进店逛逛</span>
+	      
+	        <p class="merchant-notice"><label for="">店铺公告：</label>八鲜桥品牌：是一家集有机水产品与绿色农产品种养殖、生产、冷冻、存储、连锁经营、电子商务为一体的综合性、生态化综合服务。其主打品牌“八鲜桥”，立足中高端，我们要努力改变中国人的餐桌，为城市精英的餐饮生活奉献“舌尖上的优质健康美味”。 </p>
+	      
+  
+		
+			
+		</div>
+		<div class="detailserver">
+			<ul>
+				<li data-index="0" @click="lichangeClick('0')" :class="currentIndex==0?'active':''">图片详情</li>
+				<li data-index="1" @click="lichangeClick('1')" :class="currentIndex==1?'active':''">服务保障</li>
+			</ul>
+		</div>
+		<div id="content1" :class="currentIndex==0?'':'contentactive'">
+			<img src="http://img.haoshiqi.net/merchantadmin/image20170321/ma4c7eb690db7e37f57983538d3e5c32a5" />
+		</div>
+		<div id="content2" :class="currentIndex==1?'':'contentactive'">
+			<ul class="detail-service">
+				<li>
+					<b>100%正品</b>
+					<span>所有商家均经过严格资质审核，请放心购买；</span>
+				</li>
+				<li>
+					<b>售后保障</b>
+					<span>商品存在质量问题，可以在确认收货后申请退款，并且不用退货；
+						<br>质量问题包括：过期，食品损坏、变质，包装损坏等</span>
+				</li>
+				<li>
+					<b>发货承诺</b>
+					<span>每个商家发货时间不同，具体请看商品详情页内的承诺时间，超过承诺时间未发货可取消订单。
+					</span>
+				</li>
+				<li>
+					<b>PICC安全保障</b>
+					<span>您购买的每一件商品都由中国人民保险集团股份有限公司（PICC）为您承保。</span>
+				</li>
+				<li>
+					<b>标示价格说明</b>
+					<span>被划去的“价格”指国内大陆地区知名的主流电商平台，同品牌同种等量规格商品，在本商品上架同时的标示价格，或厂家、供应商指导价，商品实际售价为本平台实时销售价格。</span>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -41,7 +109,12 @@
 	export default {
 		data(){
 			return{
-				
+				currentIndex:0
+			}
+		},
+		methods:{
+			lichangeClick(index){
+				this.currentIndex=index
 			}
 		}
 	}
@@ -49,7 +122,12 @@
 
 
 <style scoped>
+.contentactive{
+	display: none;
+}
 	#detail{
+		margin-bottom: 44px;
+		/*height:20000px;*/
 		background: #f8f8f8;
 		overflow: auto;
 	}
@@ -123,11 +201,107 @@
 		margin-bottom: 0;
 	}
 .send{
-	/*background: white;*/
+	background: white;
 	margin-top:10px;
 }
 .send .sendaddress{
+	word-spacing: 5px;
+	position: relative;
 	padding:10px;
-	height:30px;
+	height:60px;
 }
+.send .sendaddress .baoyou{
+	position: absolute;
+	top:30px;
+	left:60px;
+}
+.send ul{
+	height:71px;
+	padding:10px;
+	list-style: none;
+	background: #F8F8F8;
+	color: #b4b4b4;
+	display: flex;
+	margin-bottom: 0;
+}
+.send ul li{
+	flex: 1;
+	height:100%;
+}
+.dian{
+	background: white;
+	margin-top:10px;
+}
+.dian img{
+	float: left;
+	width:50px;
+	height:50px;
+	padding:10px 5px 5px 10px;
+}
+.dian div.l{
+	overflow: hidden;
+}
+.dian p.merchant-notice{
+	margin-top:50px;
+	display: block;
+	width:100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.detailserver{
+	height:43px;
+	display: flex;
+	margin-top:10px;
+	background: white;
+}
+.detailserver ul{
+	width:100%;
+	margin-bottom: 0;
+	display: flex;
+	list-style: none;
+}
+.detailserver ul li{
+	width: 50%;
+	flex: 1;
+	line-height: 43px;
+	text-align: center;
+	font-size: 14px;
+}
+#content1,#content2{
+	margin-top:10px;
+}
+#content1 img{
+	width:100%;
+}
+.active{
+	color:#FF5555;
+	border-bottom: 2px solid #FF5555;
+	box-sizing: border-box;
+}#content2 .detail-service{
+	background: #fff;
+    border-top: 10px solid #f1f1f1;
+    list-style: none;
+    padding-left: 0;
+    clear: both;
+    margin-bottom: 0px;
+}
+#content2 .detail-service li{
+	    position: relative;
+    padding: 10px;
+    padding-left: 15px;
+    border-top: 1px solid #dbdbdb;
+}
+
+.detail-service li b {
+    display: block;
+    padding-bottom: 5px;
+    color: #373737;
+
+}
+.detail-service li span{
+	 color: #acacac;
+    font-size: 12px;
+}
+   
 </style>
