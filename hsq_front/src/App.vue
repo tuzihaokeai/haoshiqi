@@ -7,7 +7,7 @@
 					</router-view>
 
   	
-    
+       
     <ul class="footer">
     	<router-link to="/index" tag="li" active-class="kerwinAcitive">
     		<span class="glyphicon glyphicon-home" aria-hidden="true"></span>

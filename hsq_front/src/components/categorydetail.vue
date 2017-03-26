@@ -311,7 +311,7 @@
 	    height: 32px;
 	    /*border: .625rem solid transparent;
 	    -webkit-box-sizing: content-box;*/
-	    box-sizing: content-box;
+	    box-sizing: content-box;   
 	}
 	.shopcar span{
 		display: block;

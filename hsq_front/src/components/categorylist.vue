@@ -72,7 +72,7 @@
 			return{
 				
 			}
-		},
+		},   
 		methods:{
 			handelClick(){
 				router.push("/category/categorydetail")
