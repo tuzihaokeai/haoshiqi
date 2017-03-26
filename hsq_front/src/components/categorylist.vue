@@ -119,7 +119,7 @@
 	    color: #b4b4b4;
 	}
 	.list_content{
-		margin-top: 50px;
+		margin-top: 50px;  
 	}
 	.category_div{
 		background:#FFFFFF;
