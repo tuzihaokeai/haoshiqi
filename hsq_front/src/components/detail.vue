@@ -129,7 +129,7 @@
 				this.currentIndex=index
 			},
 			backClick(){
-				router.push("/category/categorydetail")
+				router.go(-1)
 			},
 			homeClick(){
 				router.push("/index")
