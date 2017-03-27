@@ -21,10 +21,10 @@
     		<li><img src="../assets/5.jpg"/></li>
     	</ul>
     	<ul class="index_list">
-    		<li>
-    			<img src="../assets/list1.jpg"/>
+    		<li v-for="(data,index) in indexlist" @click="handleChange()">
+    			<img :src="imagepath[index]"/>
     			<div class="index_text">
-				<h3>秒杀 马来西亚桂格燕麦饼干一盒162g口味随机</h3>
+				<h3>{{data.name}}</h3>
 				<p>
 					<span class="tag" style="background: #FF5555;">4.7折</span>
 				  <dfn class="index_price">¥ <span class="price_box">7.80</span></dfn>
@@ -36,33 +36,7 @@
 				  </p>
   				</div>
     		</li>
-    		<li>
-    			<img src="../assets/list1.jpg"/>
-    			<div class="index_text">
-				<h3>秒杀 马来西亚桂格燕麦饼干一盒162g口味随机</h3>
-				<p>
-					<span class="tag" style="background: #FF5555;">4.7折</span>
-				  <dfn class="index_price">¥ <span class="price_box">7.80</span></dfn>
-				  <del class="del_price">8.90</del>
-				</p>
-					<p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-				<p>
 
-				  </p>
-  				</div>
-    		</li>
-    		<li>
-    			<img src="../assets/list1.jpg"/>
-    			<div class="index_text">
-				<h3>秒杀 马来西亚桂格燕麦饼干一盒162g口味随机</h3>
-				<p>
-					<span class="tag" style="background: #FF5555;">4.7折</span>
-				  <dfn class="index_price">¥ <span class="price_box">7.80</span></dfn>
-				  <del class="del_price">8.90</del>
-				  <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-				</p>
-  				</div>
-    		</li>
     	</ul>
 	</div>
 </template>
@@ -74,10 +48,18 @@ import css from '../bootstrap/css/bootstrap.css'
 		data(){
 			return{
 				iconlist:[],
-				imgpath:[]
+				imgpath:[],
+				indexlist:[],
+				imagepath:[]
 			}
 		},
-		mounted(){
+		methods:{
+			handleChange(){
+//				router.push(`/category/detail/${id}`)
+				router.push("/category/detail/:id")
+			}
+		},
+		mounted(){		
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
 			
 			//console.log(res.body)
@@ -85,11 +67,21 @@ import css from '../bootstrap/css/bootstrap.css'
 			for(var i=0;i<res.body.data.subButtonList.length;i++){
 				this.imgpath.push(res.body.data.subButtonList[i].icon)
 			}
-			//console.log(this.imgpath)
+		},error=>{
 			
+		}),
+		this.$http.get("http://localhost:3000/homeapi/product").then(res=>{
+			
+			//console.log(res.body.data.list)
+			this.indexlist=res.body.data.list
+
+			for(var i=0;i<res.body.data.list.length;i++){
+				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
+			}
 		},error=>{
 			
 		})
+
 	}
 	}
 </script>
