@@ -2,11 +2,11 @@
 	<div id="categorydetail">
 		<div class="detail_header">
       		<span class="back-btn" @click="backClick()">返回</span>
-  			<div class="search" @click="searchClick()">
+  			<div class="search" @click="inputClick()">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				<input type="text" placeholder="搜索您想找的商品"/>
 			</div>
-  			<p id="home" @click="homeClick()">搜索</p>
+  			<p id="home" @click="searchClick()">搜索</p>
 		</div>
 		<!------->
 		<div class="search_content">
@@ -31,6 +31,7 @@
 			  <div class="app_history">
 			      <h4>最近搜过</h4>
 			      <ul class="history-list">
+			      	 <li class="history_text"></li>
 			         <li class="last">暂无搜索历史</li>
 			      </ul>
 			  </div>
@@ -55,7 +56,15 @@
 			}
 		},
 		methods:{
-			
+			backClick(){
+				router.go(-1)
+			},
+			inputClick(){
+				
+			},
+			searchClick(){
+				
+			}
 		}
 	}
 </script>
@@ -128,7 +137,44 @@
 	.hotsearch{
 		background: #fff;
     	border-top: 1.2px solid #e4e4e4;
-    	display: flex;
+    	/*display: flex;*/
+    	width:100%;
 	}
-	
+	.text_li{
+		position: relative;
+	    float: left;
+	    width: 33%;
+	    height: 40px;
+	    line-height: 40px;
+	    list-style: none;
+	    text-align: center;
+	    border-bottom: 1.2px solid #e4e4e4;
+	}
+	.app_history{
+		margin-top: 85px;
+	}
+	.app_history h4{
+		padding: .625rem;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    color: #b4b4b4;
+	}
+	.last{
+		list-style: none;
+		width: 100%;
+		height: 40px;
+	    line-height: 40px;
+	    list-style: none;
+	    text-align: center;
+	}
+	/*.history_text{
+		position: relative;
+	    float: left;
+	    width: 33%;
+	    height: 40px;
+	    line-height: 40px;
+	    list-style: none;
+	    text-align: center;
+	    border-bottom: 1.2px solid #e4e4e4;
+	}*/
 </style>
