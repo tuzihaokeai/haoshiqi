@@ -6,7 +6,10 @@ import Cors from "cors"
 import resource from "vue-resource"
 import $ from "jquery"
 import { Loadmore } from 'mint-ui';
+import vueFilter from 'vue-filter';
 
+
+//Vue.install(vueFilter);
 Vue.component(Loadmore.name, Loadmore);
 Vue.use(Cors)
 Vue.use(VueRouter)

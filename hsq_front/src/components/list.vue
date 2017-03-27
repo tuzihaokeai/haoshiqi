@@ -27,9 +27,10 @@
     			<div class="index_text">
 				<h3>{{data.name}}</h3>
 				<p>
-					<span class="tag" style="background: #FF5555;">4.7折</span>
-				  <dfn class="index_price">¥ <span class="price_box">7.80</span></dfn>
-				  <del class="del_price">8.90</del>
+					<span class="tag" style="background: #FF5555;" v-show="show">{{data.today_discount}}</span>
+				<!--	<vue-numeric  currency="￥" separator="," v-model="price" :default="price"></vue-numeric>-->
+				  <dfn class="index_price">¥ <span class="price_box">{{data.lowest_price}}</span></dfn>
+				  <del class="del_price">{{data.market_price}}</del>
 				</p>
 					<p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
 				<p>
@@ -43,18 +44,27 @@
 	</div>
 </template>
 <script>
+import Vue from 'vue'
 import router from '../router'
-import css from '../bootstrap/css/bootstrap.css'
+import css from '../bootstrap/css/bootstrap.css';
+import VueNumeric from 'vue-numeric';
 
+//Vue.filter('filter', function(value) {
+//return value.slice(0,1)+"."+value.slice(2,3)
+//
+//})
 	export default {
 		data(){
 			return{
+				show:'',
 				iconlist:[],
 				imgpath:[],
 				indexlist:[],
 				imagepath:[],
 				a:1,
-				num:''
+				num:'',
+				price:"",
+				priceArray:[]
 			}
 		},
 		methods:{
@@ -67,16 +77,31 @@ import css from '../bootstrap/css/bootstrap.css'
 				this.a=++this.a;
 				//console.log(this.a)
 			//this.allLoaded = true;// 若数据已全部获取完毕
-//			this.$refs.loadmore.onBottomLoaded();
+			this.$refs.loadmore.onBottomLoaded();
 			this.loadingmore(this.a);
 			  
 			},
 			loadingmore(index){
 					console.log(index)
-				this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
+				this.$http.get("http://localhost:3000/homeapi/product",{
+					params:{
+						num:index
+					}
+				}).then(res=>{
 			
-			//console.log(res.body.data.list)
-			this.indexlist=res.body.data.list
+			console.log(res.body.data.list)
+			this.indexlist=[...this.indexlist,...res.body.data.list]
+			console.log(res.body.data.list)
+			//this.price=res.body.data.list.lowest_price
+			
+			res.body.data.list.map(item=>{
+				
+				this.priceArray.push(item.lowest_price)
+				//item.lowest_price
+				
+			})
+			console.log(this.priceArray)
+			
 
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
@@ -110,6 +135,10 @@ import css from '../bootstrap/css/bootstrap.css'
 			
 		})
 
+	},
+	
+	components:{
+		VueNumeric
 	}
 	}
 </script>
