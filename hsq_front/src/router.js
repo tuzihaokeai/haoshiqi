@@ -11,6 +11,7 @@ import UserInfo from "./components/userinfo.vue";
 import Detail from "./components/detail.vue";
 import CategoryList from "./components/categorylist.vue";
 import CategoryDetail from "./components/categorydetail.vue";
+import Search from "./components/search.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -20,7 +21,8 @@ const routes = [
 		component:Index,
 		children:[
 			{path:"list",component:List},
-			{path:"detail/:id",name:"detail",component:Detail}
+			{path:"detail/:id",name:"detail",component:Detail},
+			{path:"search",component:Search}
 		]
 	},
 	{
@@ -30,7 +32,8 @@ const routes = [
 		children:[
 			{path:"categorydetail",component:CategoryDetail},
 			{path:"categorylist",component:CategoryList},
-			{path:"detail/:id",name:"detail",component:Detail}
+			{path:"detail/:id",name:"detail",component:Detail},
+			{path:"search",component:Search}
 		]
 	},
 	{path:"/shopcar",component:Shopcar},

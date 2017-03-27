@@ -1,7 +1,7 @@
 <template>
 	<div id="categorylist">
 		<div class="header" style="height: 44px;">
-			<div class="search">
+			<div class="search" @click="handelSearch()">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				<input type="text" placeholder="搜索您想找的商品"/>
 			</div>
@@ -76,6 +76,9 @@
 		methods:{
 			handelClick(){
 				router.push("/category/categorydetail")
+			},
+			handelSearch(){
+				router.push("/category/search")
 			}
 		}
 		
