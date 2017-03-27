@@ -4,9 +4,9 @@
       		<span class="back-btn" @click="backClick()">返回</span>
   			<div class="search" @click="inputClick()">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				<input type="text" placeholder="搜索您想找的商品"/>
+				<input type="text" placeholder="搜索您想找的商品" v-model="searchText"/>
 			</div>
-  			<p id="home" @click="searchClick()">搜索</p>
+  			<p id="home" @click="searchClick(searchText)">搜索</p>
 		</div>
 		<!------->
 		<div class="search_content">
@@ -14,17 +14,7 @@
 			<div class="page-search">
 			      <h4>热门搜索</h4>
 			      <ul class="hotsearch">
-			          <li class="text_li">芒果</li>
-	
-			          <li class="text_li">提拉米苏</li>
-			       
-			          <li class="text_li">牛奶</li>
-			          
-			          <li class="text_li">蛋糕</li>
-			          
-			          <li class="text_li" >罐头</li>
-			          
-			          <li class="text_li">丽芝士</li>
+			          <li class="text_li" v-for="(data,index) in hotList">{{data.value}}</li>
 			      </ul>
 			  </div>
 			  
@@ -33,6 +23,7 @@
 			      <ul class="history-list">
 			      	 <li class="history_text"></li>
 			         <li class="last">暂无搜索历史</li>
+			        <!-- <p>{{searchText}}</p>-->
 			      </ul>
 			  </div>
 			  
@@ -52,9 +43,25 @@
 	export default {
 		data(){
 			return{
-				
+				hotList:[],
+				searchText:""
 			}
 		},
+		mounted(){
+			this.$http.get("http://localhost:3000/listapi/hotsearch").then(res=>{
+
+				this.hotList=res.body.data.list;
+////			this.goodsList=res.body.data.list
+//			console.log(this.categorylist);
+//			for(var i=0;i<res.body.data.list.length;i++){
+//				this.goodsList.push(res.body.data.list[i].subCategories)
+//			}
+				console.log(res.body.data.list)
+				
+			},error=>{
+				
+			})
+		},  
 		methods:{
 			backClick(){
 				router.go(-1)
@@ -62,8 +69,10 @@
 			inputClick(){
 				
 			},
-			searchClick(){
-				
+			searchClick(text){
+//					console.log(text)
+				router.push(`/category/categorydetail/${text}`)
+
 			}
 		}
 	}

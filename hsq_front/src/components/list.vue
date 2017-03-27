@@ -73,7 +73,9 @@ import css from '../bootstrap/css/bootstrap.css'
 			},
 			loadingmore(index){
 					console.log(index)
-				this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
+				this.$http.get("http://localhost:3000/homeapi/product",{
+					num:index
+				}).then(res=>{
 			
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list

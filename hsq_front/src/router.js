@@ -31,7 +31,7 @@ const routes = [
 		redirect:"/category/categorylist",
 		component:Category,
 		children:[
-			{path:"categorydetail",component:CategoryDetail},
+			{path:"categorydetail/:searchItem",name:"categorydetail",component:CategoryDetail},
 			{path:"categorylist",component:CategoryList},
 			{path:"detail/:id",name:"detail",component:Detail},
 			{path:"search",component:Search}
