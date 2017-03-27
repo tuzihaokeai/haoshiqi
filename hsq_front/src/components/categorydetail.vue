@@ -2,165 +2,30 @@
 	<div id="categorydetail">
 		<div class="detail_header">
       		<span class="back-btn" @click="backClick()">返回</span>
-  			<div class="title"> 休闲零食</div>
+  			<div class="title"> {{searchText}}</div>
   			<span class="glyphicon glyphicon-home" aria-hidden="true" id="home" @click="homeClick()"></span>
 		</div>
 		<!------->
 		<div class="list_div">
 			<ul class="list_ul">
-				<li class="list_li" @click="handleChange()">
+				<li class="list_li" v-for="(data,index) in goodsLi" @click="handleChange()">
 					<div class="item">
 					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
+					  	<img :src="data.main_sku_pic"/>
 					  </div>
 					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
+					    <h3>{{data.name}}</h3>
 					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
+					      <span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>
+					      <span class="price">¥ <span class="price_num J_price_box">{{data.price}}</span></span>
+					      <del class="old_price">{{data.market_price}}</del>
 					    </p>
 					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
 					  </div>
 					</div>
 <!------------------------------->
 				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>
-				<li class="list_li">
-					<div class="item">
-					  <div class="img">
-					  	<img src="http://img.haoshiqi.net/merchantadmin/image20170318/macecb233d805a102ea5824b8bcb4d975f@180w_180h_90Q.jpg">
-					  </div>
-					  <div class="text">
-					    <h3>【包邮】印尼进口丽芝士浓香芝士威化饼干350g*2（限量礼袋赠送，先抢先得）</h3>
-					    <p class="price_p">   
-					      <span class="tag" style="background: #FF5555;">6.1折</span>
-					      <span class="price">¥ <span class="price_num J_price_box">44.30</span></span>
-					      <del class="old_price">73.00</del>
-					    </p>
-					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-					  </div>
-					</div>
-<!------------------------------->
-				</li>   
+				
 			</ul>
 		</div>
 		
@@ -174,8 +39,26 @@
 	export default {
 		data(){
 			return{
-				
+				searchText:this.$route.params.searchItem,
+				goodsLi:[],
+				imagepath:[]
 			}
+		},
+		mounted(){
+			console.log(this.searchText);
+			this.$http.get("http://localhost:3000/listapi/itemssearch",{
+					params:{
+						searchKey:this.searchText
+					}
+					
+				}).then(res=>{
+					console.log(111);
+					console.log(res.body);
+//					router.push("/category/categorydetail")
+					this.goodsLi=res.body.data.list
+				},error=>{
+					
+				})
 		},
 		methods:{
 			backClick(){
@@ -187,6 +70,22 @@
 			handleChange(){
 //				router.push(`/category/detail/${id}`)
 				router.push("/category/detail/:id")
+			},
+			loadingMore(num){
+					console.log(num)
+				this.$http.get("http://localhost:3000/listapi/itemssearch",{
+					index:num
+				}).then(res=>{
+			
+				//console.log(res.body.data.list)
+					this.indexlist=res.body.data.list
+	
+					for(var i=0;i<res.body.data.list.length;i++){
+						this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
+					}
+				},error=>{
+					
+				})
 			}
 		}
 	}

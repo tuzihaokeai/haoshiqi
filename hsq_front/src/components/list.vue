@@ -84,6 +84,7 @@ import VueNumeric from 'vue-numeric';
 			loadingmore(index){
 					console.log(index)
 				this.$http.get("http://localhost:3000/homeapi/product",{
+<<<<<<< HEAD
 					params:{
 						num:index
 					}
@@ -101,6 +102,10 @@ import VueNumeric from 'vue-numeric';
 				
 			})
 			console.log(this.priceArray)
+=======
+					num:index
+				}).then(res=>{
+>>>>>>> 1f96e130ba817a5e8a0436c07af37e26cec7bb84
 			
 
 			for(var i=0;i<res.body.data.list.length;i++){
