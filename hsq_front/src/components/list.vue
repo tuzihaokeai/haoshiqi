@@ -20,6 +20,7 @@
     		<li><img src="../assets/4.jpg"/></li>
     		<li><img src="../assets/5.jpg"/></li>
     	</ul>
+    	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
     	<ul class="index_list">
     		<li v-for="(data,index) in indexlist" @click="handleChange()">
     			<img :src="imagepath[index]"/>
@@ -38,6 +39,7 @@
     		</li>
 
     	</ul>
+    	</mt-loadmore>
 	</div>
 </template>
 <script>
@@ -50,14 +52,40 @@ import css from '../bootstrap/css/bootstrap.css'
 				iconlist:[],
 				imgpath:[],
 				indexlist:[],
-				imagepath:[]
+				imagepath:[],
+				a:1,
+				num:''
 			}
 		},
 		methods:{
 			handleChange(){
 //				router.push(`/category/detail/${id}`)
 				router.push("/category/detail/:id")
+			},
+			loadBottom() {
+				
+				this.a=++this.a;
+				//console.log(this.a)
+			//this.allLoaded = true;// 若数据已全部获取完毕
+//			this.$refs.loadmore.onBottomLoaded();
+			this.loadingmore(this.a);
+			  
+			},
+			loadingmore(index){
+					console.log(index)
+				this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
+			
+			//console.log(res.body.data.list)
+			this.indexlist=res.body.data.list
+
+			for(var i=0;i<res.body.data.list.length;i++){
+				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
+		},error=>{
+			
+		})
+			}
+			
 		},
 		mounted(){		
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
@@ -70,7 +98,7 @@ import css from '../bootstrap/css/bootstrap.css'
 		},error=>{
 			
 		}),
-		this.$http.get("http://localhost:3000/homeapi/product").then(res=>{
+		this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
 			
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
