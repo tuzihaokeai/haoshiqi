@@ -86,7 +86,7 @@ export default {
     	font-size: 12px;
     }
     .kerwinAcitive{
-           color:white!important;
-           background:yellow!important;
+           color:rgba(255,238,17,.9)!important;
+           background:white!important;
         }
 </style>

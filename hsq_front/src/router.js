@@ -12,6 +12,7 @@ import Detail from "./components/detail.vue";
 import CategoryList from "./components/categorylist.vue";
 import CategoryDetail from "./components/categorydetail.vue";
 import Search from "./components/search.vue";
+import Login from "./components/login.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -43,7 +44,8 @@ const routes = [
 		redirect:"/wode/mine",
 		children:[
 			{path:"mine",component:Mine},
-			{path:"userinfo",component:UserInfo}
+			{path:"userinfo",component:UserInfo},
+			{path:"login",component:Login}
 		]
 	},
 	{path:"*",redirect:"/index"}
