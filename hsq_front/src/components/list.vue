@@ -29,7 +29,7 @@
 				<p>
 					<span class="tag" style="background: #FF5555;" v-show="show">{{data.today_discount}}</span>
 				<!--	<vue-numeric  currency="￥" separator="," v-model="price" :default="price"></vue-numeric>-->
-				  <dfn class="index_price">¥ <span class="price_box">{{data.lowest_price}}</span></dfn>
+				  <dfn class="index_price">¥ <span class="price_box">{{priceArr[index]}}</span></dfn>
 				  <del class="del_price">{{data.market_price}}</del>
 				</p>
 					<p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
@@ -49,10 +49,6 @@ import router from '../router'
 import css from '../bootstrap/css/bootstrap.css';
 import VueNumeric from 'vue-numeric';
 
-//Vue.filter('filter', function(value) {
-//return value.slice(0,1)+"."+value.slice(2,3)
-//
-//})
 	export default {
 		data(){
 			return{
@@ -64,7 +60,8 @@ import VueNumeric from 'vue-numeric';
 				a:1,
 				num:'',
 				price:"",
-				priceArray:[]
+				priceArray:[],
+				priceArr:[]
 			}
 		},
 		methods:{
@@ -98,11 +95,18 @@ import VueNumeric from 'vue-numeric';
 				
 				this.priceArray.push(item.lowest_price)
 				//item.lowest_price
-				
+		
 			})
 			console.log(this.priceArray)
-			
-
+			for(var x=0;x<this.priceArray.length;x++){
+				var a=this.priceArray[x];
+				var b=a.toString();
+				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
+				console.log(c)
+				this.priceArr.push(c)
+				
+			}
+				console.log(this.priceArr)
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
@@ -128,7 +132,21 @@ import VueNumeric from 'vue-numeric';
 			
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
-
+			res.body.data.list.map(item=>{
+				
+				this.priceArray.push(item.lowest_price)
+				//item.lowest_price
+		
+			})
+			console.log(this.priceArray)
+			for(var x=0;x<this.priceArray.length;x++){
+				var a=this.priceArray[x];
+				var b=a.toString();
+				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
+				console.log(c)
+				this.priceArr.push(c)
+				
+			}
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
