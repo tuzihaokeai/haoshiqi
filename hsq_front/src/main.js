@@ -6,6 +6,7 @@ import Cors from "cors"
 import resource from "vue-resource"
 import $ from "jquery"
 
+
 Vue.use(Cors)
 Vue.use(VueRouter)
 Vue.use(resource)

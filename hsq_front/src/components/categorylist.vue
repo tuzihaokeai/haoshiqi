@@ -9,59 +9,20 @@
 		
 		<!------categorylist----->
 		<div class="list_content">  
-		    <div class="category_div">
+		    <div class="category_div"  v-for="(categoryitem,categoryindex) in categorylist">
 		      <h4 class="category_h4" @click="handelClick()">
 		      	<i class="dot"></i>
-		      	休闲零食 
-		      	<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+		      	{{categoryitem.name}}
 		      </h4>
 		      <ul class="category_ul">
-		        
-		          <li class="category_li">饼干糕点</li>
-		        
-		          <li class="category_li">坚果炒货</li>
-		        
-		          <li class="category_li">糖果巧克力</li>
-		        
-		          <li class="category_li">膨化食品</li>
-		        
-		          <li class="category_li">肉脯干卤味</li>
-		        
-		      </ul>
-		    </div>
 		    
-		    <div class="category_div">
-		      <h4 class="category_h4">饮料冲调<i class="dot"></i></h4>
-		      <ul class="category_ul">
-		        
-		          <li class="category_li">咖啡茶饮</li>
-		        
-		          <li class="category_li">水/饮料</li>
-		        
-		          <li class="category_li">含乳饮品</li>
-		        
-		          <li class="category_li">果蔬汁/蜂蜜冲饮</li>
-		        
-		          <li class="category_li">酒</li>
-		        
-		      </ul>
-		    </div>
+		          <li class="category_li" v-for="(item,index) in goodsList[categoryindex]">{{item.name}}</li>
 		    
-		    <div class="category_div">
-		      <h4 class="category_h4">速食调味 <i class="iconfont icon-link fr"></i></h4>
-		      <ul class="category_ul">
-		        
-		          <li class="category_li">罐头速食</li>
-		        
-		          <li class="category_li">调味酱料</li>
-		        
-		          <li class="category_li">粮油</li>
-		        
 		      </ul>
 		    </div>
+		 
 		</div>
 		<!---->		
-		
 	</div>
 </template>
 <script>
@@ -70,9 +31,25 @@
 	export default {
 		data(){
 			return{
-				
+				categorylist:[],
+				goodsList:[]
 			}
-		},   
+		},
+		mounted(){
+			this.$http.get("http://localhost:3000/listapi/category").then(res=>{
+
+			this.categorylist=res.body.data.list;
+//			this.goodsList=res.body.data.list
+			console.log(this.categorylist);
+			for(var i=0;i<res.body.data.list.length;i++){
+				this.goodsList.push(res.body.data.list[i].subCategories)
+			}
+				console.log(this.goodsList)
+				
+			},error=>{
+				
+			})
+		},  
 		methods:{
 			handelClick(){
 				router.push("/category/categorydetail")
@@ -80,7 +57,8 @@
 			handelSearch(){
 				router.push("/category/search")
 			}
-		}
+		},
+		
 		
 	}
 </script>
