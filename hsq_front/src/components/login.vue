@@ -16,35 +16,43 @@
 				<li data-index="1" @click="changeModule('1')" :class="currentIndex==1?'active':''">注册</li>
 		</ul>
 		<div id="content1" v-if="show">
-			<p>账号      :<input type="text" placeholder="请输入账号"/></p>
-			<p>密码      :<input type="password" placeholder="请输入密码"/></p>
-			<p><button>登录</button></p>
+			<p>账号      :<input type="text" placeholder="请输入账号" v-model="username"/></p>
+			<p>密码      :<input type="password" placeholder="请输入密码" v-model="password"/></p>
+			<p><button @click="login()">登录</button></p>
 		</div>
 		<div id="content2" v-else>
-			<p>账号       :<input type="text" placeholder="请输入手机号或邮箱"/></p>
-			<p>密码       :<input type="password" placeholder="请输入密码"/></p>
-			<p>密码       :<input type="password" placeholder="请确认输入密码"/></p>
-			<p><button>注册</button></p>
+			<p>账号       :<input type="text" placeholder="请输入手机号或邮箱" v-model="zhanghao"/></p>
+			<p>密码       :<input type="password" placeholder="请输入密码" v-model="mima"/></p>
+			<p>确认密码:<input type="password" placeholder="请确认输入密码" v-model="querenmima"/></p>
+			<p><button @click="register()">注册</button></p>
 		</div>
 	</div>
 </template>
 
 
 <script>
-
+import $ from "jquery"
 import css from '../bootstrap/css/bootstrap.css'
 import router from "../router"
 	export default {
 		data(){
 			return{
 				currentIndex:0,
-				show:true
+				show:true,
+				username:"",
+				password:"",
+				zhanghao:"",
+				mima:"",
+				querenmima:""
 			}
 		},
+		
 		mounted(){
 			
 		},
+	
 		methods:{
+		
 			changeModule(index){
 				
 				this.currentIndex = index;
@@ -59,7 +67,56 @@ import router from "../router"
 			},
 			backClick(){
 				router.push("/wode/mine")
-			}
+			},
+			register(){
+				$.ajax({
+					url:"http://localhost/php/register.php",
+					data:{
+						tel:this.zhanghao,
+						psw:this.mima
+					},
+					type:"post",
+					success:(res)=>{
+						console.log(res)
+						
+					}
+				})
+//				this.$http.post("http://localhost/php/register.php",{
+//						tel:this.zhanghao,
+//						psw:this.mima					
+//				}).then(res=>{
+//					console.log(res)
+//				},error=>{
+//					console.log(error)
+//				})
+			},
+			login(){
+				$.ajax({
+					
+					url:"http://localhost/php/login.php",
+					data:{
+						tel:this.username,
+						psw:this.password
+					},
+					type:"post",
+					success:(res)=>{
+						console.log(res)
+						
+						Cookie.setCookie("userID",this.username,5)
+						router.push("/index/list")
+					}
+				})
+//				this.$http.post("http://localhost/php/login.php",{
+//						tel:this.username,
+//						psw:this.password					
+//				}).then(res=>{
+//					console.log(res)
+//				},error=>{
+//					console.log(error)
+//				})
+		},
+
+    	
 		}
 	}
 	//kianger
@@ -127,12 +184,12 @@ import router from "../router"
 	#login #content1 p,#login #content2 p{
 		width:100%;
 		height:56px;
-		padding:8px 50px;
+		padding:8px 30px;
 		font-size: 18px;
 		overflow: hidden;
 	}
 	#login #content1 p input,#login #content2 p input{
-		width:80%;
+		width:70%;
 		border:1px solid #ccc;
 		float: right;
 	}
