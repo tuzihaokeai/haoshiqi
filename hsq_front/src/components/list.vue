@@ -163,7 +163,6 @@ import VueNumeric from 'vue-numeric';
 				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
 				//console.log(c)
 				this.oldArr.push(c)
-
 			}			
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
