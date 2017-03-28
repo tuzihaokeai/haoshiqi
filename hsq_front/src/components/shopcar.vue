@@ -77,6 +77,7 @@
 
 
 <script>
+import $ from "jquery"
 import router from "../router"
 	export default {
 		data(){
@@ -86,13 +87,33 @@ import router from "../router"
 		},
 		created(){
 			if(Cookie.getCookie("userID")){
-				
+				$.post("http://localhost/php/getShopcar.php",{
+						username:"liudi",
+				}).then(res=>{
+					console.log(res)
+				},error=>{
+					console.log(error)
+				})
 			}else{
 				router.push("/wode/login")
 			}
 		},
 		addShopcar(){
-			
+//				this.$http.post("http://localhost/php/addShopcar.php",{
+//						username:,
+//						shopname:,
+//						goodsname:,
+//						newprice:,
+//						oldprice:,
+//						number:,
+//						overgoods:,
+//						goodsimg:
+//						
+//				}).then(res=>{
+//					console.log(res)
+//				},error=>{
+//					console.log(error)
+//				})
 		}
 	}
 </script>

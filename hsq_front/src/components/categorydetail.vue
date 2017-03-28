@@ -88,6 +88,7 @@
 					console.log(num)
 				this.$http.get("http://localhost:3000/listapi/itemssearch",{
 					params:{
+						searchKey:this.searchText,
 						index:num
 					}
 				}).then(res=>{
