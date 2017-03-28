@@ -99,6 +99,8 @@ import router from "../router"
 			}
 		},
 		addShopcar(){
+			
+			if(Cookie.getCookie("userID")){
 //				this.$http.post("http://localhost/php/addShopcar.php",{
 //						username:,
 //						shopname:,
@@ -114,6 +116,10 @@ import router from "../router"
 //				},error=>{
 //					console.log(error)
 //				})
+			}else{
+				alert("您还没有登录")
+			}
+
 		}
 	}
 </script>
@@ -173,7 +179,7 @@ html,body{
 	.content dl dd{
 		position: relative;
 		float: right;
-		width:331px;
+		width:92%;
 		height:106px;
 		
 		margin:10px 0;
@@ -181,9 +187,10 @@ html,body{
 	}
 	.content dl dd input.choose{
 		position: absolute;
-		top:23px;
-		left:-23px;
+		top:6%;
+		left:-8%;
 	}
+	.content dl dd .goodsdetail{}
 	.content dl dd .goodsdetail .imgp{
 		overflow: hidden;
 		height:50px;
