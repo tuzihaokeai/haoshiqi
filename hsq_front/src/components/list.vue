@@ -1,7 +1,7 @@
 <template>
 	<div id="list">
 			<div class="portal-header">
-      <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search"/>
+      <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
       <div class="portal-location">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
     	</div>
     	<div class="banner"></div>
@@ -62,14 +62,12 @@ import VueNumeric from 'vue-numeric';
 				priceArr:[],
 				oldprice:'',
 				oldArray:[],
-				oldArr:[]
+				oldArr:[],
+				goodsId:[]
 			}
 		},
 		methods:{
-			handleChange(){
-//				router.push(`/category/detail/${id}`)
-				router.push("/category/detail/:id")
-			},
+
 			loadBottom() {
 				
 				this.a=++this.a;
@@ -89,7 +87,7 @@ import VueNumeric from 'vue-numeric';
 			
 			console.log(res.body.data.list)
 			this.indexlist=[...this.indexlist,...res.body.data.list]
-			console.log(res.body.data.list)
+
 			//this.price=res.body.data.list.lowest_price
 			
 			res.body.data.list.map(item=>{
@@ -116,14 +114,23 @@ import VueNumeric from 'vue-numeric';
 				this.oldArr.push(c)
 				
 			}
-				console.log(this.priceArr)
+				//console.log(this.priceArr)
 			for(var i=0;i<res.body.data.list.length;i++){
+				this.goodsId.push(res.body.data.list[i].skuInfo.skuId)
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
 		},error=>{
 			
 			
 		})
+			},
+			handleChange(id){
+				console.log(this.indexlist[0].skuInfo.id)
+				router.push(`/index/detail/${id}`)
+//				router.push({name:'detail',params:{id:goodsId}})
+			},
+			handelSearch(){
+				router.push("/list/search")
 			}
 			
 		},
@@ -149,12 +156,12 @@ import VueNumeric from 'vue-numeric';
 				this.oldArray.push(item.market_price)
 		
 			})
-			console.log(this.priceArray)
+			//console.log(this.priceArray)
 			for(var x=0;x<this.priceArray.length;x++){
 				var a=this.priceArray[x];
 				var b=a.toString();
 				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
-				console.log(c)
+				//console.log(c)
 				this.priceArr.push(c)				
 			}
 			for(var y=0;y<this.oldArray.length;y++){
