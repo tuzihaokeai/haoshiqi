@@ -14,7 +14,7 @@
 			<div class="page-search">
 			      <h4>热门搜索</h4>
 			      <ul class="hotsearch">
-			          <li class="text_li" v-for="(data,index) in hotList">{{data.value}}</li>
+			          <li class="text_li" v-for="(data,index) in hotList" @click="hotClick(data.value)">{{data.value}}</li>
 			      </ul>
 			  </div>
 			  
@@ -73,9 +73,17 @@
 //					console.log(text)
 				router.push(`/category/categorydetail/${text}`)
 
+			},
+			hotClick(clickvalue){
+				console.log(clickvalue);
+				router.push(`/category/categorydetail/${clickvalue}`)
 			}
 		}
 	}
+//	searchtag%3D%E8%8A%92%E6%9E%9C%26backLevel%3D-2%26channel_id%3Dh5&searchTag=%E8%8A%92%E6%9E%9C&q=%E8%8A%92%E6%9E%9C&
+//	searchtag%3D%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F%26backLevel%3D-2%26channel_id%3Dh5&searchTag=%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F&q=%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F&
+//	searchtag=芒果&backLevel=-2&channel_id=h5&searchTag=芒果&q=芒果&"
+//	searchtag=提拉米苏&backLevel=-2&channel_id=h5&searchTag=提拉米苏&q=提拉米苏&"
 </script>
 <style scoped>
 	.detail_header{
