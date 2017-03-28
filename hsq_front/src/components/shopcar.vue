@@ -77,12 +77,20 @@
 
 
 <script>
+import router from "../router"
 	export default {
 		data(){
 			return{
 				
 			}
-		}
+		},
+		created(){
+			if(Cookie.getCookie("userID")){
+				
+			}else{
+				router.push("/wode/login")
+			}
+		},
 	}
 </script>
 

@@ -6,7 +6,7 @@
 		</div>
 		<div class="person" @click="changePage()">
 			<img src="http://img.haoshiqi.net/avatar/avatar_default.png@120w_120h_90Q" />
-			<div class="tel">未登录</div>
+			<div class="tel">{{status}}</div>
 			<p class="addressmanage">账户、收货地址管理  ></p>
 		</div>
 		
@@ -77,16 +77,28 @@ import router from "../router"
 	export default {
 		data(){
 			return{
-				
+				status:""
 			}
 		},
 		mounted(){
 			
 		},
+		created(){
+			if(Cookie.getCookie("userID")){
+				this.status=Cookie.getCookie("userID")
+			}else{
+				this.status="未登录"
+			}
+		},
 		methods:{
 			changePage(){
 				console.log("pp")
-				router.push("/wode/login")
+				if(Cookie.getCookie("userID")){
+					router.push("/wode/userinfo")
+				}else{
+					router.push("/wode/login")
+				}
+				
 			}
 		}
 	}

@@ -17,7 +17,7 @@
 				<p class="name">
 					
 					昵称
-					<span class="r">123846516</span>
+					<span class="r">{{status}}</span>
 					<span class="r"></span>
 				</p>
 				<p class="brith">
@@ -29,7 +29,7 @@
 					
 					手机号
 					<span class="r"></span>
-					<span class="r">123854645</span>
+					<span class="r">{{status}}</span>
 				</p>
 			</div>
 			
@@ -57,6 +57,13 @@ import router from "../router"
 	export default {
 		data(){
 			return{
+				status:''
+			}
+		},
+		created(){
+			if(Cookie.getCookie("userID")){
+				this.status=Cookie.getCookie("userID")
+			}else{
 				
 			}
 		},
