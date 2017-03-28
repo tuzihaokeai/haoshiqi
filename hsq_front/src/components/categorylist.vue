@@ -6,7 +6,7 @@
 				<input type="text" placeholder="搜索您想找的商品"/>
 			</div>
 		</div>
-		
+		  
 		<!------categorylist----->
 		<div class="list_content">  
 		    <div class="category_div"  v-for="(categoryitem,categoryindex) in categorylist">

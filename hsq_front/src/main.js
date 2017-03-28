@@ -18,7 +18,7 @@ Vue.use(resource)
 
 Vue.http.options.emulateJSON = true;
 
-
+  
 new Vue({
   el: '#app',
   router,

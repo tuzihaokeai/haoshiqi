@@ -7,7 +7,7 @@
   			<div class="title"> {{searchText}}</div>
   			<span class="glyphicon glyphicon-home" aria-hidden="true" id="home" @click="homeClick()"></span>
 		</div>
-		<!------->
+		<!------->  
 		<div class="list_div">
 			<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
 			<ul class="list_ul">

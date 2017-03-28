@@ -17,7 +17,7 @@ import Login from "./components/login.vue";
 
 Vue.use(VueRouter);
 const routes = [
-	{
+	{  
 		path:"/index",
 		redirect:"/index/list",
 		component:Index,
