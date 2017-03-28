@@ -28,7 +28,6 @@
 				<h3>{{data.name}}</h3>
 				<p>
 					<span class="tag" style="background: #FF5555;" v-show="show">{{data.today_discount}}</span>
-				<!--	<vue-numeric  currency="￥" separator="," v-model="price" :default="price"></vue-numeric>-->
 				  <dfn class="index_price">¥ <span class="price_box">{{priceArr[index]}}</span></dfn>
 				  <del class="del_price">{{data.market_price}}</del>
 				</p>
@@ -59,9 +58,9 @@ import VueNumeric from 'vue-numeric';
 				imagepath:[],
 				a:1,
 				num:'',
-				price:"",
 				priceArray:[],
-				priceArr:[]
+				priceArr:[],
+				oldprice:''
 			}
 		},
 		methods:{

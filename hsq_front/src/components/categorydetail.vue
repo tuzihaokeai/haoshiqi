@@ -7,6 +7,7 @@
 		</div>
 		<!------->
 		<div class="list_div">
+			<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
 			<ul class="list_ul">
 				<li class="list_li" v-for="(data,index) in goodsLi" @click="handleChange(data.main_sku)">
 					<div class="item">
@@ -27,6 +28,7 @@
 				</li>
 				
 			</ul>
+			</mt-loadmore>
 		</div>
 		
 		
@@ -41,7 +43,8 @@
 			return{
 				searchText:this.$route.params.searchItem,
 				goodsLi:[],
-				imagepath:[]
+				imagepath:[],
+				a:1
 			}
 		},
 		mounted(){
@@ -72,18 +75,27 @@
 //				router.push(`/category/detail/${goodsID}`)
 				router.push(`/category/detail/${goodsID}`)
 			},
+			loadBottom() {
+				
+				this.a=++this.a;
+				//console.log(this.a)
+			//this.allLoaded = true;// 若数据已全部获取完毕
+			this.$refs.loadmore.onBottomLoaded();
+			this.loadingMore(this.a);
+			  
+			},
 			loadingMore(num){
 					console.log(num)
 				this.$http.get("http://localhost:3000/listapi/itemssearch",{
-					index:num
+					params:{
+						index:num
+					}
 				}).then(res=>{
 			
-				//console.log(res.body.data.list)
-					this.indexlist=res.body.data.list
+				console.log(res.body.data)
+//					this.indexlist=res.body.data.list
 	
-					for(var i=0;i<res.body.data.list.length;i++){
-						this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
-					}
+				
 				},error=>{
 					
 				})
