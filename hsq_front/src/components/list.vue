@@ -29,7 +29,7 @@
 				<p>
 					<span class="tag" style="background: #FF5555;" v-show="show">{{data.today_discount}}</span>
 				  <dfn class="index_price">¥ <span class="price_box">{{priceArr[index]}}</span></dfn>
-				  <del class="del_price">{{data.market_price}}</del>
+				  <del class="del_price">{{oldArr[index]}}</del>
 				</p>
 					<p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
 				<p>
@@ -60,7 +60,9 @@ import VueNumeric from 'vue-numeric';
 				num:'',
 				priceArray:[],
 				priceArr:[],
-				oldprice:''
+				oldprice:'',
+				oldArray:[],
+				oldArr:[]
 			}
 		},
 		methods:{
@@ -93,6 +95,7 @@ import VueNumeric from 'vue-numeric';
 			res.body.data.list.map(item=>{
 				
 				this.priceArray.push(item.lowest_price)
+				this.oldArray.push(item.market_price)
 				//item.lowest_price
 		
 			})
@@ -101,8 +104,16 @@ import VueNumeric from 'vue-numeric';
 				var a=this.priceArray[x];
 				var b=a.toString();
 				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
-				console.log(c)
+				//console.log(c)
 				this.priceArr.push(c)
+				
+			}
+			for(var y=0;y<this.oldArray.length;y++){
+				var a=this.oldArray[y];
+				var b=a.toString();
+				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
+				//console.log(c)
+				this.oldArr.push(c)
 				
 			}
 				console.log(this.priceArr)
@@ -135,6 +146,7 @@ import VueNumeric from 'vue-numeric';
 				
 				this.priceArray.push(item.lowest_price)
 				//item.lowest_price
+				this.oldArray.push(item.market_price)
 		
 			})
 			console.log(this.priceArray)
@@ -143,9 +155,16 @@ import VueNumeric from 'vue-numeric';
 				var b=a.toString();
 				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
 				console.log(c)
-				this.priceArr.push(c)
-				
+				this.priceArr.push(c)				
 			}
+			for(var y=0;y<this.oldArray.length;y++){
+				var a=this.oldArray[y];
+				var b=a.toString();
+				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
+				//console.log(c)
+				this.oldArr.push(c)
+
+			}			
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
