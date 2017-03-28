@@ -15,7 +15,7 @@ Vue.use(Cors)
 Vue.use(VueRouter)
 Vue.use(resource)
 
-
+Vue.http.options.emulateJSON = true;
 
 
 new Vue({
