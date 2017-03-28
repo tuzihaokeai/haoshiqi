@@ -67,7 +67,9 @@ import VueNumeric from 'vue-numeric';
 			}
 		},
 		methods:{
-
+			handelSearch(){
+				router.push("/index/search")
+			},
 			loadBottom() {
 				
 				this.a=++this.a;
@@ -128,11 +130,7 @@ import VueNumeric from 'vue-numeric';
 				console.log(this.indexlist[index].skuInfo.id)
 				router.push(`/index/detail/${this.indexlist[index].skuInfo.id}`)
 //				router.push({name:'detail',params:{id:goodsId}})
-			},
-			handelSearch(){
-				router.push("/list/search")
 			}
-			
 		},
 		mounted(){		
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{

@@ -1,6 +1,6 @@
 <template>
 	<div id="detail">
-		<div class="Header">
+		<div class="Header" style="position: fixed;top: 0;left: 0;">
 			<span class="back"  @click="backClick()">返回</span>
 			商品详情
 			
@@ -36,7 +36,7 @@
 		<div class="send">
 			<div class="sendaddress">
 				<p>送至   : <span>上海市<i></i></span></p>
-				<span class="baoyou">岑商品马爱一件包邮</span>
+				<span class="baoyou"></span>
 			</div>
 			<span class="ib-label">
 				<img class="icon-label" :src="labels.icon"> 
@@ -53,10 +53,10 @@
 			
 	      <img src="http://img.haoshiqi.net/merchantadmin/image20170313/ma581f1d5587df34d5f3214c0ba96e3106@200w_200h_90Q.jpg" alt="八鲜桥官方旗舰店">
 	      <div class="l">
-		      <h5>八鲜桥官方旗舰店</h5>
-		      <p>上海市&nbsp;上海市</p>
+		      <h5>{{city}}</h5>
+		      <p>{{city}}&nbsp;上海市</p>
 	      </div>
-	      <span>进店逛逛</span>
+	      <span class="go_shop">进店逛逛</span>
 	      
 	        <p class="merchant-notice"><label for="">店铺公告：</label>八鲜桥品牌：是一家集有机水产品与绿色农产品种养殖、生产、冷冻、存储、连锁经营、电子商务为一体的综合性、生态化综合服务。其主打品牌“八鲜桥”，立足中高端，我们要努力改变中国人的餐桌，为城市精英的餐饮生活奉献“舌尖上的优质健康美味”。 </p>
 	      
@@ -71,7 +71,7 @@
 			</ul>
 		</div>
 		<div id="content1" :class="currentIndex==0?'':'contentactive'">
-			<img src="http://img.haoshiqi.net/merchantadmin/image20170321/ma4c7eb690db7e37f57983538d3e5c32a5" />
+			<img src="" />
 		</div>
 		<div id="content2" :class="currentIndex==1?'':'contentactive'">
 			<ul class="detail-service">
@@ -123,7 +123,8 @@
 				name:"",
 				lowest_price:"",
 				baozhengList:[],
-				labels:{}
+				labels:{},
+				city:''
 			}
 		},
 		mounted(){
@@ -134,15 +135,20 @@
 					}
 					
 				}).then(res=>{
-					
+		
+					var a=res.body.data.market_price;
+					var c=res.body.data.lowest_price;
+					var b=a.toString();		
+					var d=c.toString();
 					console.log(res.body.data);
 					this.imgpath=res.body.data.pics;
-					console.log(this.imgpath);
-					this.name=res.body.data.name;
-					this.lowest_price=res.body.data.lowest_price;
-					this.market_price=res.body.data.market_price;
+					this.name=res.body.data.name;			
+					this.city=res.body.data.merchantInfo.city
+					//this.lowest_price=res.body.data.lowest_price;
 					this.baozhengList=res.body.data.labels;
 					this.labels=res.body.data.merchantInfo.labels[0];
+					this.market_price=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
+					this.lowest_price=d.substring(0,d.length-2)+"."+d.substring(d.length-2,d.length)
 //					router.push("/category/categorydetail")
 //					this.goodsLi=res.body.data.list
 				},error=>{
@@ -178,11 +184,13 @@
 		position: relative;
 		background: white;
 		text-align: center;
+		width: 100%;
 		line-height:44px;
 		height:44px;
 		color: #914e07;
 		background: rgba(255,238,17,.9);
 		font-size: 18px;
+		margin-bottom: 44px;
 	}
 	.l{
 	float: left;
@@ -196,7 +204,7 @@
 	left:10px
 }
 .img{
-	width: 360px;
+	width: 100%;
 	height: 360px;
 	overflow: hidden;
 }
@@ -258,10 +266,10 @@
 	margin-top:10px;
 }
 .send .sendaddress{
-	word-spacing: 5px;
+	/*word-spacing: 5px;*/
 	position: relative;
-	padding:10px;
-	height:60px;
+	padding:5px;
+	line-height: 30px;
 }
 .send .sendaddress .baoyou{
 	position: absolute;
@@ -284,6 +292,18 @@
 .dian{
 	background: white;
 	margin-top:10px;
+}
+/*进店逛逛*/
+.dian {
+	position: relative;
+}
+.go_shop{
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 0 2px;
+    border: 1px solid #959595;
+    border-radius: 4px;
 }
 .dian img{
 	float: left;
