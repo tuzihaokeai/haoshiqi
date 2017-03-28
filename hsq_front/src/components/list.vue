@@ -22,7 +22,7 @@
     	</ul>
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
     	<ul class="index_list">
-    		<li v-for="(data,index) in indexlist" @click="handleChange()">
+    		<li v-for="(data,index) in indexlist" @click="handleChange(index)">
     			<img :src="imagepath[index]"/>
     			<div class="index_text">
 				<h3>{{data.name}}</h3>
@@ -124,9 +124,9 @@ import VueNumeric from 'vue-numeric';
 			
 		})
 			},
-			handleChange(id){
-				console.log(this.indexlist[0].skuInfo.id)
-				router.push(`/index/detail/${id}`)
+			handleChange(index){
+				console.log(this.indexlist[index].skuInfo.id)
+				router.push(`/index/detail/${this.indexlist[index].skuInfo.id}`)
 //				router.push({name:'detail',params:{id:goodsId}})
 			},
 			handelSearch(){

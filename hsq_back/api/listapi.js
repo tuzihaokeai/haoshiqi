@@ -26,7 +26,6 @@ router.get('/itemssearch', function(req, res, next) {
     console.log(encodeURIComponent(req.query.searchKey)) ;
     spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fsearchtag="+encodeURIComponent(req.query.searchKey)+"%26backLevel%3D-2%26channel_id%3Dh5&searchTag="+encodeURIComponent(req.query.searchKey)+"&q="+encodeURIComponent(req.query.searchKey)+"&needPagination=1&pageNum="+req.query.index+"&pageLimit=20",function(result){
         console.log(result+"11111")
-s
         res.send(result)
 
     })
