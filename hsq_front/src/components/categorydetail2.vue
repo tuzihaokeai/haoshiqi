@@ -1,7 +1,7 @@
 <template>
 	<div id="categorydetail">
 		<!--{{listtemplate}}-->
-		<p style="width: 100%;height: 100%;margin-top: 50px;">{{list}}</p>
+		<!--<p style="width: 100%;height: 100%;margin-top: 50px;">{{list}}</p>-->
 		<div class="detail_header">
       		<span class="back-btn" @click="backClick()">返回</span>
   			<div class="title"> {{searchText}}</div>
@@ -11,7 +11,7 @@
 		<div class="list_div">
 			<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
 			<ul class="list_ul">
-				<li class="list_li" v-for="(data,index) in goodsLi" @click="handleChange(data.main_sku)">
+				<li class="list_li" v-for="(data,index) in list" @click="handleChange()">
 					<div class="item">
 					  <div class="img">
 					  	<img :src="data.main_sku_pic"/>
@@ -19,7 +19,7 @@
 					  <div class="text">
 					    <h3>{{data.name}}</h3>
 					    <p class="price_p">   
-					      <span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>
+					      <!--<span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>-->
 					      <span class="price">¥ <span class="price_num J_price_box">{{data.price}}</span></span>
 					      <del class="old_price">{{data.market_price}}</del>
 					    </p>

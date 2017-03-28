@@ -32,20 +32,20 @@ router.get('/itemssearch', function(req, res, next) {
     })
 });
 router.get('/listsearch', function(req, res, next) {
-    console.log(req.query+"1111122222222222222111")
+    console.log(JSON.parse(req.query)+"11111222222liudi1")
     //console.log(encodeURIComponent(req.query.searchKey)) ;
-    spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F%26categoryid%3D15%26channel_id%3Dh5&categoryId=15&category=%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F&needPagination=1&pageNum=1&pageLimit=20",function(result){
-        console.log(result+"11111")
+  spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F%26categoryid%3D15%26channel_id%3Dh5&categoryId=15&category=%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F&needPagination=1&pageNum=1&pageLimit=20",function(result){
+      console.log(result+"11111")
 
-        res.send(result)
+      res.send(result)
 
-    })
-    //spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+encodeURIComponent(req.query.searchKey)+"%26categoryid%3D"+req.query. ID+" %26channel_id%3Dh5 &categoryId="+req.query. ID+" &category="+req.query.name",function(result){
-    //    console.log(result+"11111")
-    //
-    //    res.send(result)
-    //
-    //})
+  })
+   // spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+req.query.nameKey+"%26categoryid%3D"+req.query.idKey+" %26channel_id%3Dh5 &categoryId="+req.query.idKey+" &category="+req.query.nameKey,function(result){
+//        console.log(result+"11111")
+//    
+//        res.send(result)
+//    
+//    })
 });
 //searchtag="+encodeURIComponent(req.query.searchKey)+"%26backLevel%3D-2%26channel_id%3Dh5&searchTag="+encodeURIComponent(req.query.searchKey)+"&q="+encodeURIComponent(req.query.searchKey)+"&needPagination=1&pageNum="+req.query.index+"&pageLimit=20"
 //categoryname%3D"+encodeURIComponent(req.query.searchKey)+"%26categoryid%3D"+req.query. ID+" %26channel_id%3Dh5 &categoryId="+req.query. ID+" &category="+req,query.name"
