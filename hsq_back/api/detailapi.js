@@ -14,11 +14,19 @@ router.get('/categorylist', function(req, res, next) {
     })
 //这是商品详情的请求
 router.get('/goodsdetail', function(req, res, next) {
-    console.log(req.query) ;
+    //console.log(req.query) ;
     spider("/product/iteminfo?token=124dd1ce3de28aba5bb1c9a054b220b3&device=pc&uuid=10887631&channel=h5&swidth=1366&sheight=768&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23detail%3Fsid%3D12772%26channel_id%3Dh5&avatar=http%3A%2F%2Fimg.haoshiqi.net%2Favatar%2Favatar_default.png%40120w_120h_90Q&birthday=0000-00-00&enabled=1&created_at=1490409043&user_id=10887631&isRegister=true&needBind=2&inviteCode=A621CFXB&userId=10887631&skuId="+req.query.goodsID,function(result){
         res.send(result)
 
     })
 });
+//图片请求
+//router.get('/goodsimg', function(req, res, next) {
+// 
+//  spider("http://m.api.haoshiqi.net/product/productdetail?device=iphone&channel=h5&swidth=375&sheight=667&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23detail%3Fsid%3D13047%26channel_id%3Dh5&productId="+req.query.goodsID,function(result){
+//      res.send(result)
+//		console.log(result) ;
+//  })
+//});
 
 module.exports = router;

@@ -51,14 +51,14 @@
 		</div>
 		<div class="dian">
 			
-	      <img src="http://img.haoshiqi.net/merchantadmin/image20170313/ma581f1d5587df34d5f3214c0ba96e3106@200w_200h_90Q.jpg" alt="八鲜桥官方旗舰店">
+	      <img :src="logo" :alt="shopname">
 	      <div class="l">
-		      <h5>{{city}}</h5>
-		      <p>{{city}}&nbsp;上海市</p>
+		      <h5>{{shopname}}</h5>
+		      <p>{{province}}&nbsp;{{city}}</p>
 	      </div>
 	      <span class="go_shop">进店逛逛</span>
 	      
-	        <p class="merchant-notice"><label for="">店铺公告：</label>八鲜桥品牌：是一家集有机水产品与绿色农产品种养殖、生产、冷冻、存储、连锁经营、电子商务为一体的综合性、生态化综合服务。其主打品牌“八鲜桥”，立足中高端，我们要努力改变中国人的餐桌，为城市精英的餐饮生活奉献“舌尖上的优质健康美味”。 </p>
+	        <p class="merchant-notice"><label for="">店铺公告：</label>{{notice}}</p>
 	      
   
 		
@@ -71,7 +71,7 @@
 			</ul>
 		</div>
 		<div id="content1" :class="currentIndex==0?'':'contentactive'">
-			<img src="" />
+		<img v-for="(data,index) in imgpath" :src="imgpath[index+1]" />
 		</div>
 		<div id="content2" :class="currentIndex==1?'':'contentactive'">
 			<ul class="detail-service">
@@ -124,7 +124,12 @@
 				lowest_price:"",
 				baozhengList:[],
 				labels:{},
-				city:''
+				city:'',
+				province:'',
+				shopname:'',
+				logo:'',
+				notice:'',
+				pic:''
 			}
 		},
 		mounted(){
@@ -143,10 +148,14 @@
 					console.log(res.body.data);
 					this.imgpath=res.body.data.pics;
 					this.name=res.body.data.name;			
-					this.city=res.body.data.merchantInfo.city
-					//this.lowest_price=res.body.data.lowest_price;
+					this.city=res.body.data.merchantInfo.city;
+					this.logo=res.body.data.merchantInfo.logo;
+					this.province=res.body.data.province;
+					this.shopname=res.body.data.merchantInfo.name ;
 					this.baozhengList=res.body.data.labels;
 					this.labels=res.body.data.merchantInfo.labels[0];
+					this.notice=res.body.data.merchantInfo.notice;
+					
 					this.market_price=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
 					this.lowest_price=d.substring(0,d.length-2)+"."+d.substring(d.length-2,d.length)
 //					router.push("/category/categorydetail")
@@ -154,6 +163,7 @@
 				},error=>{
 					
 				})
+		
 		},
 		methods:{
 			lichangeClick(index){
@@ -171,6 +181,7 @@
 
 
 <style scoped>
+
 .contentactive{
 	display: none;
 }
@@ -271,6 +282,10 @@
 	padding:5px;
 	line-height: 30px;
 }
+.send .sendaddress p{
+-webkit-margin-after:0;	
+}
+
 .send .sendaddress .baoyou{
 	position: absolute;
 	top:30px;
@@ -461,7 +476,8 @@
 .ib-label{
 	display: inline-block;
     margin-right: 10px;
-    margin-left: 57px;
+    margin-left: 44px;
+    line-height: 30px;
 }
 .icon-label{
 	width: 15px;
