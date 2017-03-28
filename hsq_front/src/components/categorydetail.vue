@@ -1,5 +1,7 @@
 <template>
 	<div id="categorydetail">
+		<!--{{listtemplate}}
+		{{list}}-->
 		<div class="detail_header">
       		<span class="back-btn" @click="backClick()">返回</span>
   			<div class="title"> {{searchText}}</div>
@@ -34,8 +36,10 @@
 		
 	<!------->
 	</div>
+	
 </template>
 <script>
+	import Vuex from "vuex"; 
 	import css from '../bootstrap/css/bootstrap.css';
 	import router from "../router"
 	export default {
@@ -48,21 +52,35 @@
 			}
 		},
 		mounted(){
-			console.log(this.searchText);
+			//console.log(this.searchText);
 			this.$http.get("http://localhost:3000/listapi/itemssearch",{
 					params:{
 						searchKey:this.searchText
 					}
 					
 				}).then(res=>{
-					console.log(111);
-					console.log(res.body);
+					//console.log(111);
+					//console.log(res.body);
 //					router.push("/category/categorydetail")
 					this.goodsLi=res.body.data.list
 				},error=>{
 					
 				})
+				
+//				
+//				
 		},
+//		computed:{
+////			listtemplate:function(){
+////				return this.$store.getters.complete;
+////			},
+//			list:function(){
+//				return this.$store.state.datalist;
+//			}
+//		},
+//		created(){
+//			console.log(this.listtemplate);
+//		},`
 		methods:{
 			backClick(){
 				router.push("/category/categorylist")
@@ -71,7 +89,7 @@
 				router.push("/index")
 			},
 			handleChange(goodsID){
-				console.log(goodsID)
+				//console.log(goodsID)
 //				router.push(`/category/detail/${goodsID}`)
 				router.push(`/category/detail/${goodsID}`)
 			},
@@ -85,7 +103,7 @@
 			  
 			},
 			loadingMore(num){
-					console.log(num)
+					//console.log(num)
 				this.$http.get("http://localhost:3000/listapi/itemssearch",{
 					params:{
 						searchKey:this.searchText,
@@ -93,9 +111,9 @@
 					}
 				}).then(res=>{
 			
-				console.log(res.body.data)
+				//console.log(res.body.data)
 //					this.indexlist=res.body.data.list
-	
+					this.goodsLi=[...this.goodsLi,...res.body.data.list]
 				
 				},error=>{
 					

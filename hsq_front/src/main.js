@@ -7,7 +7,8 @@ import resource from "vue-resource"
 import $ from "jquery"
 import { Loadmore } from 'mint-ui';
 import vueFilter from 'vue-filter';
-
+import Vuex from "vuex";
+import store from "./store";
 
 //Vue.install(vueFilter);
 Vue.component(Loadmore.name, Loadmore);
@@ -21,5 +22,6 @@ Vue.http.options.emulateJSON = true;
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

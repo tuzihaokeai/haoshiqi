@@ -11,6 +11,7 @@ import UserInfo from "./components/userinfo.vue";
 import Detail from "./components/detail.vue";
 import CategoryList from "./components/categorylist.vue";
 import CategoryDetail from "./components/categorydetail.vue";
+import CategoryDetail2 from "./components/categorydetail2.vue";
 import Search from "./components/search.vue";
 import Login from "./components/login.vue";
 
@@ -32,6 +33,7 @@ const routes = [
 		component:Category,
 		children:[
 			{path:"categorydetail/:searchItem",name:"categorydetail",component:CategoryDetail},
+			{path:"categorydetail2",component:CategoryDetail2},
 			{path:"categorylist",component:CategoryList},
 			{path:"detail/:id",name:"detail",component:Detail},
 			{path:"search",component:Search}

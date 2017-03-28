@@ -1,4 +1,4 @@
-<template>
+﻿<template>
 	<div id="categorylist">
 		<div class="header" style="height: 44px;">
 			<div class="search" @click="handelSearch()">
@@ -10,13 +10,13 @@
 		<!------categorylist----->
 		<div class="list_content">  
 		    <div class="category_div"  v-for="(categoryitem,categoryindex) in categorylist">
-		      <h4 class="category_h4" @click="handelClick()">
+		      <h4 class="category_h4" @click="handelClick(categoryitem.name,categoryitem.id)">
 		      	<i class="dot"></i>
 		      	{{categoryitem.name}}
 		      </h4>
 		      <ul class="category_ul">
 		    
-		          <li class="category_li" v-for="(item,index) in goodsList[categoryindex]">{{item.name}}</li>
+		          <li class="category_li" v-for="(item,index) in goodsList[categoryindex]" @click="listClick(item.name,item.id)">{{item.name}}</li>
 		    
 		      </ul>
 		    </div>
@@ -27,12 +27,14 @@
 </template>
 <script>
 	import css from '../bootstrap/css/bootstrap.css';
-	import router from "../router"
+	import router from "../router";
+	import Vuex from "vuex";
 	export default {
 		data(){
 			return{
 				categorylist:[],
-				goodsList:[]
+				goodsList:[],
+				info:[]
 			}
 		},
 		mounted(){
@@ -51,11 +53,41 @@
 			})
 		},  
 		methods:{
-			handelClick(){
-				router.push("/category/categorydetail")
+			handelClick(h4Name,h4Id){
+				//handleChange(goodsID){
+					console.log(h4Name);
+					console.log(h4Id);
+				this.$http.get("http://localhost:3000/listapi/listsearch",{
+					params:{
+						nameKey:h4Name,
+						idKey:h4Id
+					}
+					
+				}).then(res=>{
+					//console.log(111);
+					console.log(res.body);
+					console.log(h4Name);
+					this.$store.dispatch("ADD_ITEM_ACTION",{
+			          info:res.body.data,
+			      	  title:h4Name
+			       });
+			       console.log(this.info)
+					router.push("/category/categorydetail2")
+//					this.goodsLi=res.body.data.list
+				},error=>{
+					
+				})
+					//router.push(`/category/categorydetail/${h4Name,h4Id}`)
+					//router.push(`/category/categorydetail/${goodsID}`)
+				//},
+			},
+			listClick(goodsName,goodsId){
+//				router.push("/category/search")
+				console.log(goodsName);
+				console.log(goodsId);
 			},
 			handelSearch(){
-				router.push("/category/search")
+				
 			}
 		},
 		
