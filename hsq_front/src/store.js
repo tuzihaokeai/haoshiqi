@@ -24,7 +24,7 @@ const store= new Vuex.Store({
 
 		ADD_ITEM_MUTATION:(state,data)=>{
 			//操作state-》增加数据
-			state.datalist.push(data.info.list);
+			state.datalist=data.info.list;
 			//state.titletext.push(data.title);
 				console.log(state.datalist);
 				//console.log(state.title)
