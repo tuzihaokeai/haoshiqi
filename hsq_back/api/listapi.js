@@ -32,17 +32,12 @@ router.get('/itemssearch', function(req, res, next) {
     })
 });
 router.get('/listsearch', function(req, res, next) {
-    //JSON.parse(req.query)
+
     console.log(req.query)
-    //console.log(encodeURIComponent(req.query.searchKey)) ;
-  //spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F%26categoryid%3D15%26channel_id%3Dh5&categoryId=15&category=%E7%BD%90%E5%A4%B4%E9%80%9F%E9%A3%9F&needPagination=1&pageNum=1&pageLimit=20",function(result){
-  //    console.log(result+"11111")
-  //
-  //    res.send(result)
-  //
-  //})
+
     spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+req.query.nameKey+"%26categoryid%3D"+req.query.idKey+"%26channel_id%3Dh5&categoryId="+req.query.idKey+"&category="+req.query.nameKey+"&needPagination=1&pageNum=1&pageLimit=20",function(result){
-          //console.log(result)
+
+        console.log(result)
 
           res.send(result)
 
@@ -56,6 +51,9 @@ router.get('/listsearch', function(req, res, next) {
 //categoryname%3D%E9%80%9F%E9%A3%9F%E8%B0%83%E5%91%B3%26categoryid%3D3%26channel_id%3Dh5&categoryId=3&category=%E9%80%9F%E9%A3%9F%E8%B0%83%E5%91%B3
 //
 //"categoryname=罐头速食 &categoryid=15 &channel_id=h5&categoryId=15 &category=罐头速食"
+
+
+//---热门搜索的请求----------
 router.get('/hotsearched', function(req, res, next) {
     console.log(req.query+"1111122222222222222111")
     //console.log(encodeURIComponent(req.query.searchKey)) ;
