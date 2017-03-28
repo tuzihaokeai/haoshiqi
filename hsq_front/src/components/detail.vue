@@ -6,21 +6,25 @@
 			
 			<span class="glyphicon glyphicon-home" aria-hidden="true" id="home" @click="homeClick()"></span>
 		</div>
+		
 		<div class="img">
-			<img src="http://img.haoshiqi.net/merchantadmin/image20170321/mae0236bcbbb2ab581e44b759c8ed5a338@420w_420h_90Q.jpg" />
+			<img v-for="(data,index) in imgpath" :src="imgpath[index]" />
 		</div>
 		<div class="goodsinfo">
 			<div class="goodsname">
-				刊名长沙理工惹什么事科技日思考凯瑞甘rise立方米ser的公开两方面
+				{{name}}
 			</div>
 			<div class="goodsprice">
-				<strong>￥<span>200</span></strong>
-				<span class="spanprice">价格￥<del>366</del></span>
+				<strong>￥<span>{{lowest_price}}</span></strong>
+				<span class="spanprice">价格￥<del>{{market_price}}</del></span>
 				<span class="spannum">库存<b>2000</b>件</span>
 			</div>
-			<div class="detaildes">
-				打开森GVorIE两个人是人工耳塞
-			</div>
+			<p class="getcoupons">
+					
+					<span>领券:</span>
+					<span class="r">123846516</span>
+					<span class="r"></span>
+			</p>
 			<p class="alreadychoose">
 					
 					已选:
@@ -34,22 +38,14 @@
 				<p>送至   : <span>上海市<i></i></span></p>
 				<span class="baoyou">岑商品马爱一件包邮</span>
 			</div>
-			<ul>
-				<li>
-					<span></span>
-					<p>正品保证</p>
-				</li>
-				<li>
-					<span></span>
-					<p>PICC承保</p>
-				</li>
-				<li>
-					<span></span>
-					<p>72小时内发货</p>
-				</li>
-				<li>
-					<span></span>
-					<p>售后保障</p>
+			<span class="ib-label">
+				<img class="icon-label" :src="labels.icon"> 
+				{{labels.text}}
+			</span>
+			<ul class="baozheng">
+				<li v-for="(data,index) in baozhengList">
+					<img :src="data.icon" />
+					<p>{{data.text}}</p>
 				</li>
 			</ul>
 		</div>
@@ -121,8 +117,37 @@
 	export default {
 		data(){
 			return{
-				currentIndex:0
+				currentIndex:0,
+				id:this.$route.params.id,
+				imgpath:[],
+				name:"",
+				lowest_price:"",
+				baozhengList:[],
+				labels:{}
 			}
+		},
+		mounted(){
+			console.log(this.$route.params);
+			this.$http.get("http://localhost:3000/detailapi/goodsdetail",{
+					params:{
+						goodsID:this.id
+					}
+					
+				}).then(res=>{
+					
+					console.log(res.body.data);
+					this.imgpath=res.body.data.pics;
+					console.log(this.imgpath);
+					this.name=res.body.data.name;
+					this.lowest_price=res.body.data.lowest_price;
+					this.market_price=res.body.data.market_price;
+					this.baozhengList=res.body.data.labels;
+					this.labels=res.body.data.merchantInfo.labels[0];
+//					router.push("/category/categorydetail")
+//					this.goodsLi=res.body.data.list
+				},error=>{
+					
+				})
 		},
 		methods:{
 			lichangeClick(index){
@@ -171,23 +196,29 @@
 	left:10px
 }
 .img{
-	width:100%;
+	width: 360px;
+	height: 360px;
+	overflow: hidden;
 }
 .img img{
 	width:100%;
+	height: 100%;
 }
 .goodsinfo{
 	background: white;
 	overflow: hidden;
+	
 }
 .goodsinfo .goodsname{
 	height:56px;
 	padding:10px 10px;
 }
 .goodsinfo .goodsprice{
-	height:19px;
+	height:35px;
 	width:100%;
-	padding:0 10px
+	padding:0 10px;
+	position: relative;
+	border-bottom: 1px solid #CCCCCC;
 }
 .goodsinfo .goodsprice strong{
 	font-size: 18px;
@@ -195,6 +226,7 @@
 	font-weight: 100;
 }
 .goodsinfo .goodsprice .spanprice{
+	margin-left: 35px;
 	font-size: 10px;
 	color: #aaa!important;
 	line-height: 19px;
@@ -203,6 +235,9 @@
 	font-size: 10px;
 	color: #aaa!important;
 	line-height: 19px;
+	position: absolute;
+	right:6px;
+	top:5px;
 }
 .goodsinfo .detaildes{
 	border-bottom: 1px solid #ccc;
@@ -375,5 +410,44 @@
 .liAcitive{
 	color:white!important;
     background:yellow!important;
+}
+.baozheng{
+	background: #f7f8fa;
+    color: #959595;
+    font-size: .625rem;
+    text-align: center;
+}
+.baozheng li{
+    width: 25%;
+    float: left;
+    margin-right: 0;
+    text-align: center;
+    color: #b4b4b4;
+}
+.baozheng li img{
+	width: 30px;
+    height: 30px;
+    margin-top: -2px;
+    vertical-align: middle;
+}
+.baozheng li p{
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+.ib-label{
+	display: inline-block;
+    margin-right: 10px;
+    margin-left: 57px;
+}
+.icon-label{
+	width: 15px;
+	height: 15px;
+	margin-top: -2px;
+    vertical-align: middle;
+    display: inline-block;
 }
 </style>

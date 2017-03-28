@@ -8,7 +8,7 @@
 		<!------->
 		<div class="list_div">
 			<ul class="list_ul">
-				<li class="list_li" v-for="(data,index) in goodsLi" @click="handleChange()">
+				<li class="list_li" v-for="(data,index) in goodsLi" @click="handleChange(data.main_sku)">
 					<div class="item">
 					  <div class="img">
 					  	<img :src="data.main_sku_pic"/>
@@ -67,9 +67,10 @@
 			homeClick(){
 				router.push("/index")
 			},
-			handleChange(){
-//				router.push(`/category/detail/${id}`)
-				router.push("/category/detail/:id")
+			handleChange(goodsID){
+				console.log(goodsID)
+//				router.push(`/category/detail/${goodsID}`)
+				router.push(`/category/detail/${goodsID}`)
 			},
 			loadingMore(num){
 					console.log(num)
