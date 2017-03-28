@@ -91,6 +91,9 @@ import router from "../router"
 				router.push("/wode/login")
 			}
 		},
+		addShopcar(){
+			
+		}
 	}
 </script>
 
