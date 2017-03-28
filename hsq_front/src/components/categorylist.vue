@@ -87,7 +87,7 @@
 				console.log(goodsId);
 			},
 			handelSearch(){
-				
+				router.push(`/category/search`)
 			}
 		},
 		
