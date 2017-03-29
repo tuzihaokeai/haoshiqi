@@ -6,7 +6,7 @@ const store= new Vuex.Store({
 //con
 	state:{
 		datalist:[] ,//定义组件中的"状态"
-		titletext:[]
+		titletext:""
 	},
    
 	actions:{
@@ -25,7 +25,9 @@ const store= new Vuex.Store({
 		ADD_ITEM_MUTATION:(state,data)=>{
 			//操作state-》增加数据
 			state.datalist=data.info.list;
-			//state.titletext.push(data.title);
+			state.titletext=data.title;
+			
+			console.log(state.titletext);
 				console.log(state.datalist);
 				//console.log(state.title)
 		}

@@ -29,4 +29,19 @@ router.get('/goodsdetail', function(req, res, next) {
 //  })
 //});
 
+/*********** 分类页点击进入商品列表的请求    **************/
+
+router.get('/listsearch', function(req, res, next) {
+
+    console.log(req.query)
+
+    spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+encodeURIComponent(req.query.nameKey)+"%26categoryid%3D"+req.query.idKey+"%26channel_id%3Dh5&categoryId="+req.query.idKey+"&category="+encodeURIComponent(req.query.nameKey)+"&needPagination=1&pageNum=1&pageLimit=20",function(result){
+
+        console.log("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+req.query.nameKey+"%26categoryid%3D"+req.query.idKey+"%26channel_id%3Dh5&categoryId="+req.query.idKey+"&category="+req.query.nameKey+"&needPagination=1&pageNum=1&pageLimit=20")
+        console.log(result);
+          res.send(result)
+
+      })
+});
+
 module.exports = router;

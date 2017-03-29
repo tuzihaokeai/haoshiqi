@@ -57,7 +57,7 @@
 				//handleChange(goodsID){
 					console.log(h4Name);
 					console.log(h4Id);
-				this.$http.get("http://localhost:3000/listapi/listsearch",{
+				this.$http.get("http://localhost:3000/detailapi/listsearch",{
 					params:{
 						nameKey:h4Name,
 						idKey:h4Id
@@ -85,6 +85,26 @@
 //				router.push("/category/search")
 				console.log(goodsName);
 				console.log(goodsId);
+				this.$http.get("http://localhost:3000/detailapi/listsearch",{
+					params:{
+						nameKey:goodsName,
+						idKey:goodsId
+					}
+					
+				}).then(res=>{
+					//console.log(111);
+					console.log(res.body);
+					//console.log(h4Name);
+					this.$store.dispatch("ADD_ITEM_ACTION",{
+			          info:res.body.data,
+			          title:goodsName
+			       });
+			       console.log(this.info)
+					router.push("/category/categorydetail2")
+//					this.goodsLi=res.body.data.list
+				},error=>{
+					
+				})
 			},
 			handelSearch(){
 				router.push(`/category/search`)

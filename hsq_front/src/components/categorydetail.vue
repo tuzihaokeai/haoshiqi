@@ -20,8 +20,8 @@
 					    <h3>{{data.name}}</h3>
 					    <p class="price_p">   
 					      <span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>
-					      <span class="price">¥ <span class="price_num J_price_box">{{data.price}}</span></span>
-					      <del class="old_price">{{data.market_price}}</del>
+					      <span class="price">¥ <span class="price_num J_price_box">{{price[index]}}</span></span>
+					      <del class="old_price">￥{{market_price[index]}}</del>
 					    </p>
 					    <p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
 					  </div>
@@ -41,14 +41,17 @@
 <script>
 	import Vuex from "vuex"; 
 	import css from '../bootstrap/css/bootstrap.css';
-	import router from "../router"
+	import router from "../router";
+	import priceFilter from "../priceFilter";
 	export default {
 		data(){
 			return{
 				searchText:this.$route.params.searchItem,
 				goodsLi:[],
 				imagepath:[],
-				a:1
+				a:1,
+				price:[],
+				market_price:[]
 			}
 		},
 		mounted(){
@@ -63,6 +66,12 @@
 					//console.log(res.body);
 //					router.push("/category/categorydetail")
 					this.goodsLi=res.body.data.list
+//					this.price=res.body.data.list.map(item=>{
+//						priceFilter(item)
+//					});
+					this.price=res.body.data.list.map((item)=>priceFilter(item.price));
+					this.market_price=res.body.data.list.map((item)=>priceFilter(item.market_price));
+					console.log(this.price)
 				},error=>{
 					
 				})

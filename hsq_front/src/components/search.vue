@@ -20,10 +20,15 @@
 			  
 			  <div class="app_history">
 			      <h4>最近搜过</h4>
-			      <ul class="history-list">
-			      	 <li class="history_text"></li>
-			         <li class="last">暂无搜索历史</li>
-			        <!-- <p>{{searchText}}</p>-->
+			      <ul class="history-list">    
+					  <li class="history_text" v-for="(data,index) in historyList" data-key="data.index">
+					      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+					      {{data}}
+					  </li>
+				   </ul>
+			      	 	
+			 
+			   	   <li class="last" v-show="isshow">暂无搜索历史</li>
 			      </ul>
 			  </div>
 			  
@@ -44,7 +49,13 @@
 		data(){
 			return{
 				hotList:[],
-				searchText:""
+				searchText:"",
+				info:[],
+				item:"",
+				infoList:[],
+				isshow:true,
+				itemList:"",
+				historyList:["蛋糕","巧克力","薯片"]
 			}
 		},
 		mounted(){
@@ -61,6 +72,12 @@
 			},error=>{
 				
 			})
+			
+			this.historyList=[...this.historyList,...JSON.parse(localStorage.getItem("info"))]
+			
+//			this.historyList .push([...JSON.parse(localStorage.getItem("info"))]);
+	
+			console.log(this.historyList)
 		},  
 		methods:{
 			backClick(){
@@ -71,11 +88,26 @@
 			},
 			searchClick(text){
 //					console.log(text)
+//				this.infoList=[...this.infoList,localStorage.setItem("info",JSON.stringify([text]))]
+				localStorage.setItem("info",JSON.stringify([text]))
+//				this.infoList=localStorage.getItem("info")
+//				this.infoList=[...this.infoList,localStorage.getItem("info")]
+				this.infoList.push(JSON.parse(localStorage.getItem("info")))
+				console.log(this.infoList);
+//				this.isshow=false;
+//				console.log(this.isshow);
+//			    this.itemList=JSON.parse(localStorage.getItem("info"));
+//				console.log(this.itemList);
+				
+//				document.cookie="item:text";
+//				console.log(document.cookie);
+				
 				router.push(`/category/categorydetail/${text}`)
 
 			},
 			hotClick(clickvalue){
 				console.log(clickvalue);
+				
 				router.push(`/category/categorydetail/${clickvalue}`)
 			}
 		}
@@ -184,14 +216,25 @@
 	    list-style: none;
 	    text-align: center;
 	}
-	/*.history_text{
-		position: relative;
-	    float: left;
-	    width: 33%;
-	    height: 40px;
-	    line-height: 40px;
-	    list-style: none;
-	    text-align: center;
+	.history-list{
+		list-style: none;
+		background: #fff;
+   		border-top: 1.2px solid #e4e4e4;
+	}
+	.history_text{
+		float: none;
+	    width: 100%;
+	    margin-left: 20px;
 	    border-bottom: 1.2px solid #e4e4e4;
-	}*/
+	    text-align: left;
+	    color: #b4b4b4;
+	   /* text-indent: -10px;*/
+	}
+	.history_text span{
+		dispalay:block;
+		float: left;
+		margin-right: 5px;
+	    color: #b4b4b4;
+	    font-weight: 100;
+	}
 </style>
