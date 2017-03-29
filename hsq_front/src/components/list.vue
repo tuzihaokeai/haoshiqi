@@ -2,13 +2,13 @@
 	<div id="list">
 			<div class="portal-header">
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
-      <div class="portal-location">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
+      <div class="portal-location" @click="handleLocation">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
     	</div>
     	<div class="banner"></div>
     	<div class="protal-icon">
     		<ul>
     		<li v-for="(data,index) in iconlist" :key="index">
-    			<img :src="imgpath[index]" />
+    			<img :src="imgpath[index]" @click="jumpUrl(index)"/>
     			<p>{{data.label}}</p>
     		</li>
     		</ul>
@@ -72,8 +72,14 @@ import VueNumeric from 'vue-numeric';
 		},
 
 		methods:{
+			handleLocation(){
+				router.push("/index/location")
+			},
 			handelSearch(){
 				router.push("/index/search")
+			},
+			jumpUrl(index){
+				router.push(`/index/topiclist${index}`)
 			},
 			loadBottom() {
 				
