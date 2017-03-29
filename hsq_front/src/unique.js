@@ -4,9 +4,9 @@
 			var res=[];
 			var json={};
 			for(var j=0;j<this.length;j++){
-				if(!json[this[i]]){
-					res.push(this[i]);
-					json[this[i]]=1
+				if(!json[this[j]]){
+					res.push(this[j]);
+					json[this[j]]=1
 				}
 			}
 			return res

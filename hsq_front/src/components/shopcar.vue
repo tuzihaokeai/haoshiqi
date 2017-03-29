@@ -116,24 +116,46 @@ import router from "../router"
 				$.post("http://localhost/php/getShopcar.php",{
 						username:Cookie.getCookie("userID"),
 				}).then(res=>{
-//					var arr=JSON.parse(res)
-//					var res=[
-//						//{shopname:"",goods:[]}
-//					];
-//					var json={};
-//					//this.datalist=JSON.parse(res)
-//					//console.log(JSON.parse(res))
+					var arr=JSON.parse(res)
+					console.log(arr)
+					this.datalist=arr
+					
+					var res=[
+					
+					];
+//					var shopnameArr = []
 //					for(var i=0;i<arr.length;i++){
-//
-//						
-//						if(!json[arr[i].shopname){
-//							var obj={}
-//							obj.shopname=
-//							res.push(arr[i]);
-//							json[arr[i]]=1
+//						shopnameArr.push(arr[i].shopname)
+//						var quchonghouArr=[]
+//						var json={};
+//						for(var j=0;j<shopnameArr.length;j++){
+//							if(!json[shopnameArr[j]]){
+//								quchonghouArr.push(shopnameArr[j]);
+//								json[shopnameArr[j]]=1
+//							}
 //						}
+//						
 //					}
-//					console.log(arr)
+//					console.log(shopnameArr)
+//					console.log(quchonghouArr)
+					for(var i=0;i<arr.length;i++){
+						
+						if(arr.indexOf(arr[i].shopname)==-1){
+							console.log(arr.indexOf(arr[i].shopname))
+							var obj={
+								shopname:"",
+								goods:[]
+							}
+							
+							obj.shopname=arr[i].shopname
+							obj.goods.push(arr[i])
+							res.push(obj);							
+						}else{
+							console.log(arr.indexOf(arr[i].shopname))
+							res[arr.indexOf(arr[i].shopname)].goods.push(arr[i])
+						}
+					}
+					console.log(res)
 					
 				
 					if(this.datalist.length){
