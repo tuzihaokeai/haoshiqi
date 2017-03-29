@@ -215,8 +215,7 @@ import VueNumeric from 'vue-numeric';
 				var c=b.substring(0,b.length-1)+"."+b.substring(b.length-1,b.length)
 				//console.log(c)
 				this.discount.push(c)
-			
-			
+	
 			}
 //			for(var q=0;q<this.discount.length;q++){
 //				show(q);
