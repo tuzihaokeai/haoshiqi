@@ -201,6 +201,12 @@
 			}
 
 		}
+		},
+		
+		beforeRouteEnter(to,from,next){
+			console.log(11);
+			document.body.scrollTop = 0;
+			next();
 		}
 	}
 </script>
