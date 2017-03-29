@@ -188,7 +188,8 @@
 						oldprice:this.market_price,
 						number:this.Number,
 						overgoods:this.over,
-						goodsimg:this.imgpath[0]
+						goodsimg:this.imgpath[0],
+						goodsID:this.id
 						
 				}).then(res=>{
 					console.log("22")
