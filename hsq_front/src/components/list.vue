@@ -228,6 +228,7 @@ import VueNumeric from 'vue-numeric';
 //					console.log(q)
 //				}
 //			}
+
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}
