@@ -96,6 +96,12 @@ import router from "../router"
 
 
 <style scoped>
+.none{
+	height:200px;
+	width:100%;
+	text-align: center;
+	line-height:200px;
+}
 html,body{
 	height:100%;
 	width:100%;
