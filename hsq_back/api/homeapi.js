@@ -22,6 +22,34 @@ router.get('/topiclist', function(req, res, next) {
 
     })
 });
+router.get('/topiclist1', function(req, res, next) {
+    console.log(req.query) ;
+    spider("/product/topiclist?device=pc&channel=h5&swidth=1366&sheight=768&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23zt_top10%3Fchannel_id%3Dh5",function(result){
+        res.send(result)
+
+    })
+});
+router.get('/topiclist2', function(req, res, next) {
+    console.log(req.query) ;
+    spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fsearchtag%3D%E8%BF%9B%E5%8F%A3%26channel_id%3Dh5&searchTag=%E8%BF%9B%E5%8F%A3&q=%E8%BF%9B%E5%8F%A3&needPagination=1&pageNum=1&pageLimit=20",function(result){
+        res.send(result)
+
+    })
+});
+router.get('/topiclist3', function(req, res, next) {
+    console.log(req.query) ;
+    spider("/product/topicskusinfo?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23zt_template%3Ftopic_code%3D572f7cf939c1e6478c64b567f3293bae%26channel_id%3Dh5&topicCode=572f7cf939c1e6478c64b567f3293bae",function(result){
+        res.send(result)
+
+    })
+});
+router.get('/topiclist4', function(req, res, next) {
+    console.log(req.query) ;
+    spider("/product/topicskusinfo?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23zt_template%3Ftopic_code%3D585ff9959fa8b613d192de4ff665fa13%26channel_id%3Dh5&topicCode=585ff9959fa8b613d192de4ff665fa13",function(result){
+        res.send(result)
+
+    })
+});
 
 
 module.exports = router;
