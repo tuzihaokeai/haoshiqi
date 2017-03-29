@@ -22,16 +22,16 @@
     	</ul>
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
     	<ul class="index_list">
-    		<li v-for="(data,index) in indexlist" @click="handleChange(index)">
-    			<img :src="imagepath[index]"/>
-    			<div class="index_text">
-				<h3>{{data.name}}</h3>
-				<p>
-					<span class="tag" style="background: #FF5555;" v-show="show">{{data.today_discount}}</span>
+    		<li v-for="(data,index) in indexlist" >
+    			<img :src="imagepath[index]" @click="handleChange(index)"/>
+    			<div class="index_text" >
+				<h3 @click="handleChange(index)">{{data.name}}</h3>
+				<p @click="handleChange(index)">
+					<span class="tag" style="background: #FF5555;" v-show="show">{{discount[index]}}折</span>
 				  <dfn class="index_price">¥ <span class="price_box">{{priceArr[index]}}</span></dfn>
 				  <del class="del_price">{{oldArr[index]}}</del>
 				</p>
-					<p class="shopcar"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
+					<p class="shopcar" @click="addShopcar(index)"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
 				<p>
 
 				  </p>
@@ -51,7 +51,7 @@ import VueNumeric from 'vue-numeric';
 	export default {
 		data(){
 			return{
-				show:'',
+				show:true,
 				iconlist:[],
 				imgpath:[],
 				indexlist:[],
@@ -63,7 +63,11 @@ import VueNumeric from 'vue-numeric';
 				oldprice:'',
 				oldArray:[],
 				oldArr:[],
-				goodsId:[]
+				goodsId:[],
+				Number:1,
+				name:[],
+				today_discount:[],
+				discount:[]
 			}
 		},
 		methods:{
@@ -93,10 +97,12 @@ import VueNumeric from 'vue-numeric';
 			//this.price=res.body.data.list.lowest_price
 			
 			res.body.data.list.map(item=>{
-				
+				this.name.push(item.name)
 				this.priceArray.push(item.lowest_price)
 				this.oldArray.push(item.market_price)
+				this.today_discount.push(item.today_discount)
 				//item.lowest_price
+				
 		
 			})
 			console.log(this.priceArray)
@@ -116,6 +122,14 @@ import VueNumeric from 'vue-numeric';
 				this.oldArr.push(c)
 				
 			}
+				for(var x=0;x<this.today_discount.length;x++){
+				var a=this.today_discount[x];
+				var b=a.toString();
+				var c=b.substring(0,b.length-1)+"."+b.substring(b.length-1,b.length)
+				//console.log(c)
+				this.discount.push(c)
+			}
+
 				//console.log(this.priceArr)
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.goodsId.push(res.body.data.list[i].skuInfo.skuId)
@@ -130,7 +144,32 @@ import VueNumeric from 'vue-numeric';
 				console.log(this.indexlist[index].skuInfo.id)
 				router.push(`/index/detail/${this.indexlist[index].skuInfo.id}`)
 //				router.push({name:'detail',params:{id:goodsId}})
+			},
+			addShopcar(index){
+			
+			if(Cookie.getCookie("userID")){
+				this.$http.post("http://localhost/php/addShopcar.php",{
+						username:Cookie.getCookie("userID"),
+						//shopname:,
+						goodsname:this.name[index],
+						newprice:this.priceArr[index],
+						oldprice:this.oldArr[index],
+						number:Number,
+						//overgoods:,
+						//goodsimg:
+						
+				}).then(res=>{
+					
+					console.log(res)
+				},error=>{
+					console.log(error)
+				})
+			}else{
+				router.push("/wode/login")
 			}
+
+		}
+
 		},
 		mounted(){		
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
@@ -148,10 +187,10 @@ import VueNumeric from 'vue-numeric';
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
 			res.body.data.list.map(item=>{
-				
+				this.name.push(item.name)
 				this.priceArray.push(item.lowest_price)
-				//item.lowest_price
 				this.oldArray.push(item.market_price)
+				this.today_discount.push(item.today_discount)
 		
 			})
 			//console.log(this.priceArray)
@@ -168,7 +207,27 @@ import VueNumeric from 'vue-numeric';
 				var c=b.substring(0,b.length-2)+"."+b.substring(b.length-2,b.length)
 				//console.log(c)
 				this.oldArr.push(c)
-			}			
+			}	
+			var _this=this;	
+			for(var x=0;x<this.today_discount.length;x++){
+				var a=this.today_discount[x];
+				var b=a.toString();
+				var c=b.substring(0,b.length-1)+"."+b.substring(b.length-1,b.length)
+				//console.log(c)
+				this.discount.push(c)
+			
+			
+			}
+//			for(var q=0;q<this.discount.length;q++){
+//				show(q);
+//			}
+//			
+//			function show(q){
+//				if(_this.discount[q]==10.0){
+//					_this.show=false;
+//					console.log(q)
+//				}
+//			}
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
 			}

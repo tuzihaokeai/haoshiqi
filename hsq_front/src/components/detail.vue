@@ -71,7 +71,7 @@
 			</ul>
 		</div>
 		<div id="content1" :class="currentIndex==0?'':'contentactive'">
-		<img v-for="(data,index) in imgpath" :src="imgpath[index+1]" />
+		<img v-for="(data,index) in imgpath" :src="imgpath[index]" />
 		</div>
 		<div id="content2" :class="currentIndex==1?'':'contentactive'">
 			<ul class="detail-service">
