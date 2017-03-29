@@ -71,7 +71,7 @@
 			</ul>
 		</div>
 		<div id="content1" :class="currentIndex==0?'':'contentactive'">
-		<img v-for="(data,index) in imgpath" :src="imgpath[index]" />
+		<img v-for="(data,index) in imgpath" :src="imgpath[index+1]" />
 		</div>
 		<div id="content2" :class="currentIndex==1?'':'contentactive'">
 			<ul class="detail-service">
@@ -105,7 +105,7 @@
 		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:dodgerblue"></span>客服</li>
 		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏</li>
 		      <li class="minli" active-class="liAcitive"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>购物车</li>
-		      <li class="addshopcar">加入购物车</li>
+		      <li class="addshopcar" @click="addShopcar">加入购物车</li>
 		    </ul>
 		</div>
 		<!------->
@@ -129,7 +129,9 @@
 				shopname:'',
 				logo:'',
 				notice:'',
-				pic:''
+				pic:'',
+				Number:1,
+				over:1200
 			}
 		},
 		mounted(){
@@ -174,7 +176,31 @@
 			},
 			homeClick(){
 				router.push("/index")
+			},
+			addShopcar(){
+			
+			if(Cookie.getCookie("userID")){
+				this.$http.post("http://localhost/php/addShopcar.php",{
+						username:Cookie.getCookie("userID"),
+						shopname:this.shopname,
+						goodsname:this.name,
+						newprice:this.lowest_price,
+						oldprice:this.market_price,
+						number:this.Number,
+						overgoods:this.over,
+						goodsimg:this.imgpath[0]
+						
+				}).then(res=>{
+					console.log("22")
+					console.log(res)
+				},error=>{
+					console.log(error)
+				})
+			}else{
+				router.push("/wode/login")
 			}
+
+		}
 		}
 	}
 </script>

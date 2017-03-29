@@ -4,59 +4,38 @@
 			购物车
 			<span class="edit">编辑</span>
 		</div>
+		<div class="none" v-if="show">
+			空空如也...
+		</div>
 		
 		
-		
-		<div class="content">
-			<dl>
+		<div class="content" v-else>
+			<dl v-for="(data,index) in datalist">
 				<dt>
-					<input type="checkbox"  /><span>密我食谱</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<input type="checkbox"  /><span>{{data.shopname}}</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				</dt>
 				<dd>
 					<input type="checkbox" class="choose"/>
 					<div class="goodsdetail">
 						<p class="imgp">
-							<img />
-							<span>你不是佛入农夫人口卡萨诺富没法打死了贩卖人口酷狗</span>
+							<img :src="data.goodsimg"/>
+							<span>{{data.goodsname}}</span>
 						</p>
 						<p class="jisuanprice">
-							<span class="nowprice">￥<b>200.00</b></span>
-							<del>￥300</del>
+							<span class="nowprice">￥<b>{{data.newprice}}</b></span>
+							<del>￥{{data.oldprice}}</del>
 							<span class="shuliang">
 								<a>-</a>
-								<input type="text"  />
+								<input type="text" v-model="number" />
 								<a>+</a>
 							</span>
 						</p>
-						<p class="surplus">剩余1345件</p>
+						<p class="surplus">剩余{{data.overgoods}}件</p>
 					</div>
 				</dd>
 			</dl>
 			
-			<dl>
-				<dt>
-					<input type="checkbox"  /><span>密我食谱</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				</dt>
-				<dd>
-					<input type="checkbox" class="choose"/>
-					<div class="goodsdetail">
-						<p class="imgp">
-							<img />
-							<span>你不是佛入农夫人口卡萨诺富没法打死了贩卖人口酷狗</span>
-						</p>
-						<p class="jisuanprice">
-							<span class="nowprice">￥<b>200.00</b></span>
-							<del>￥300</del>
-							<span class="shuliang">
-								<a>-</a>
-								<input type="text"  />
-								<a>+</a>
-							</span>
-						</p>
-						<p class="surplus">剩余1345件</p>
-					</div>
-				</dd>
-			</dl>
+			
 		</div>
 		
 		
@@ -82,45 +61,36 @@ import router from "../router"
 	export default {
 		data(){
 			return{
+				datalist:[],
+				show:false,
+				number:1
 				
 			}
 		},
+		
 		created(){
 			if(Cookie.getCookie("userID")){
 				$.post("http://localhost/php/getShopcar.php",{
-						username:"liudi",
+						username:Cookie.getCookie("userID"),
 				}).then(res=>{
-					console.log(res)
+					//console.log(res)
+					this.datalist=JSON.parse(res)
+					console.log(this.datalist)
+					if(this.datalist.length){
+						this.show=false
+						
+					}else{
+						this.show=true
+					}
+					
 				},error=>{
 					console.log(error)
 				})
 			}else{
 				router.push("/wode/login")
 			}
-		},
-		addShopcar(){
-			
-			if(Cookie.getCookie("userID")){
-//				this.$http.post("http://localhost/php/addShopcar.php",{
-//						username:,
-//						shopname:,
-//						goodsname:,
-//						newprice:,
-//						oldprice:,
-//						number:,
-//						overgoods:,
-//						goodsimg:
-//						
-//				}).then(res=>{
-//					console.log(res)
-//				},error=>{
-//					console.log(error)
-//				})
-			}else{
-				alert("您还没有登录")
-			}
-
 		}
+
 	}
 </script>
 
