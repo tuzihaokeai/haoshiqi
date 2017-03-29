@@ -101,9 +101,17 @@ import router from "../router"
 					type:"post",
 					success:(res)=>{
 						console.log(res)
+						if(res==0){
+							console.log("iii")
+						}else{
+							Cookie.setCookie("userID",this.username,5)
+							router.push("/index/list")
+							
+						}
 						
-						Cookie.setCookie("userID",this.username,5)
-						router.push("/index/list")
+					},
+					error:(res)=>{
+						
 					}
 				})
 //				this.$http.post("http://localhost/php/login.php",{

@@ -12,12 +12,12 @@
 		<div class="content" v-else>
 			<dl v-for="(data,index) in datalist">
 				<dt>
-					<input type="checkbox"  /><span>{{data.shopname}}</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<input type="checkbox" v-model="flag" /><span>{{data.shopname}}</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				</dt>
 				<dd>
-					<input type="checkbox" class="choose"/>
+					<input type="checkbox" class="choose" :value="data" checked v-model="arr"/>
 					<div class="goodsdetail">
-						<p class="imgp">
+						<p class="imgp" @click="changePage">
 							<img :src="data.goodsimg"/>
 							<span>{{data.goodsname}}</span>
 						</p>
@@ -25,9 +25,9 @@
 							<span class="nowprice">￥<b>{{data.newprice}}</b></span>
 							<del>￥{{data.oldprice}}</del>
 							<span class="shuliang">
-								<a>-</a>
-								<input type="text" v-model="number" />
-								<a>+</a>
+								<a @click="delnumber">-</a>
+								<input type="text" v-model="number" class="numberInput"/>
+								<a @click="addnumber">+</a>
 							</span>
 						</p>
 						<p class="surplus">剩余{{data.overgoods}}件</p>
@@ -42,11 +42,11 @@
 		
 		<div class="bottom">
 			<div class="allChoose">
-				<input type="checkbox"  />
+				<input type="checkbox" @click="allChoose()" ref="allchooseInput" v-model="flag"/>
 				<p>全选</p>
 			</div>
 			<div class="allPrice">
-				<p>合计:  <span>￥98</span></p>
+				<p>合计:  <span>￥{{sum}}</span></p>
 				<p>不包含运费</p>
 			</div>
 			<input type="button" value="去结算" class="gosum"/>
@@ -56,6 +56,8 @@
 
 
 <script>
+import ShopcarFilter from "../shopcarFilter"
+import ShopcarUnique from "../unique"
 import $ from "jquery"
 import router from "../router"
 	export default {
@@ -63,19 +65,77 @@ import router from "../router"
 			return{
 				datalist:[],
 				show:false,
-				number:1
+				number:1,
+				flag:true,
+				arr:[]
 				
 			}
 		},
+		methods:{
+			changePage(id){
+				router.push(`index/detail/${id}`)
+			},
+			addnumber(){
+				this.number++
+			},
+			delnumber(){
+				if(this.number==1){
+					return
+				}else{
+					this.number--
+				}
+			},
+			allChoose(){
+				console.log(this.$refs.allchooseInput)
+				if(this.flag){
+					this.flag=false
+				}else{
+					this.flag=true
+				}
+				
+			
+			
+			}
+		},
 		
+            computed:{
+               
+                sum:function(){
+                    var pricezhi=0
+				for(var i=0;i<this.arr.length;i++){
+					pricezhi+=parseFloat(this.arr[i].newprice)	
+				}
+				pricezhi = ShopcarFilter(pricezhi)
+				
+				return pricezhi
+                }
+            },
+
 		created(){
 			if(Cookie.getCookie("userID")){
 				$.post("http://localhost/php/getShopcar.php",{
 						username:Cookie.getCookie("userID"),
 				}).then(res=>{
-					//console.log(res)
-					this.datalist=JSON.parse(res)
-					console.log(this.datalist)
+//					var arr=JSON.parse(res)
+//					var res=[
+//						//{shopname:"",goods:[]}
+//					];
+//					var json={};
+//					//this.datalist=JSON.parse(res)
+//					//console.log(JSON.parse(res))
+//					for(var i=0;i<arr.length;i++){
+//
+//						
+//						if(!json[arr[i].shopname){
+//							var obj={}
+//							obj.shopname=
+//							res.push(arr[i]);
+//							json[arr[i]]=1
+//						}
+//					}
+//					console.log(arr)
+//					
+//				
 					if(this.datalist.length){
 						this.show=false
 						
@@ -96,6 +156,9 @@ import router from "../router"
 
 
 <style scoped>
+.numberInput{
+	text-align: center;
+}
 .none{
 	height:200px;
 	width:100%;
@@ -117,6 +180,11 @@ html,body{
 		
 	}
 	.Header{
+		z-index: 1;
+		position: fixed;
+		top:0;
+		left:0;
+		width:100%;
 		text-align: center;
 		line-height:44px;
 		height:44px;
@@ -131,8 +199,10 @@ html,body{
 		top:0px
 	}
 	.content{
+		margin-top:44px;
 		background: #f8f8f8;
 		flex: 1;
+		margin-bottom: 90px;
 		
 		
 	}
@@ -223,7 +293,7 @@ html,body{
 		background: white;
 		width:100%;
 		display: flex;
-		position: absolute;
+		position: fixed;
 		bottom:44px;
 		height:49px;
 		padding-left:10px
