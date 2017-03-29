@@ -135,7 +135,7 @@
 			}
 		},
 		mounted(){
-			console.log(this.$route.params);
+			//console.log(this.$route.params);
 			this.$http.get("http://localhost:3000/detailapi/goodsdetail",{
 					params:{
 						goodsID:this.id
@@ -147,7 +147,7 @@
 					var c=res.body.data.lowest_price;
 					var b=a.toString();		
 					var d=c.toString();
-					console.log(res.body.data);
+					//console.log(res.body.data);
 					this.imgpath=res.body.data.pics;
 					this.name=res.body.data.name;			
 					this.city=res.body.data.merchantInfo.city;
@@ -205,7 +205,7 @@
 		},
 	
 		beforeRouteEnter(to,from,next){
-			console.log(11);
+			//console.log(11);
 			document.body.scrollTop = 0;
 			next();
 		}
@@ -248,6 +248,7 @@
 	left:10px
 }
 .img{
+	margin-top: 40px;
 	width: 100%;
 	height: 360px;
 	overflow: hidden;

@@ -42,11 +42,11 @@
 
 			this.categorylist=res.body.data.list;
 //			this.goodsList=res.body.data.list
-			console.log(this.categorylist);
+			//console.log(this.categorylist);
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.goodsList.push(res.body.data.list[i].subCategories)
 			}
-				console.log(this.goodsList)
+				//console.log(this.goodsList)
 				
 			},error=>{
 				
@@ -55,8 +55,8 @@
 		methods:{
 			handelClick(h4Name,h4Id){
 				//handleChange(goodsID){
-					console.log(h4Name);
-					console.log(h4Id);
+					//console.log(h4Name);
+					//console.log(h4Id);
 				this.$http.get("http://localhost:3000/detailapi/listsearch",{
 					params:{
 						nameKey:h4Name,
@@ -83,8 +83,8 @@
 			},
 			listClick(goodsName,goodsId){
 //				router.push("/category/search")
-				console.log(goodsName);
-				console.log(goodsId);
+				//console.log(goodsName);
+				//console.log(goodsId);
 				this.$http.get("http://localhost:3000/detailapi/listsearch",{
 					params:{
 						nameKey:goodsName,
@@ -93,13 +93,13 @@
 					
 				}).then(res=>{
 					//console.log(111);
-					console.log(res.body);
+					//console.log(res.body);
 					//console.log(h4Name);
 					this.$store.dispatch("ADD_ITEM_ACTION",{
 			          info:res.body.data,
 			          title:goodsName
 			       });
-			       console.log(this.info)
+			       //console.log(this.info)
 					router.push("/category/categorydetail2")
 //					this.goodsLi=res.body.data.list
 				},error=>{

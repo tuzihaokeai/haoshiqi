@@ -73,7 +73,7 @@
 				
 			})
 			
-			this.historyList=[...this.historyList,...JSON.parse(localStorage.getItem("info"))]
+//			this.historyList=[...this.historyList,...this.infoList]
 			
 //			this.historyList .push([...JSON.parse(localStorage.getItem("info"))]);
 	

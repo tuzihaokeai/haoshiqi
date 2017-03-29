@@ -27,8 +27,8 @@ const store= new Vuex.Store({
 			state.datalist=data.info.list;
 			state.titletext=data.title;
 			
-			console.log(state.titletext);
-				console.log(state.datalist);
+//			console.log(state.titletext);
+//				console.log(state.datalist);
 				//console.log(state.title)
 		}
 	},

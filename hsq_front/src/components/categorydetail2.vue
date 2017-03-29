@@ -23,7 +23,7 @@
 					  <div class="text">
 					    <h3>{{data.name}}</h3>
 					    <p class="price_p">   
-					      <!--<span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>-->
+					      <span class="tag" style="background:#FF5555;">{{data.tags[0]?data.tags[0].text:''}}</span>
 					      <span class="price">¥ <span class="price_num J_price_box">{{data.price}}</span></span>
 					      <del class="old_price">{{data.market_price}}</del>
 					    </p>
@@ -121,7 +121,8 @@
 			
 				//console.log(res.body.data)
 //					this.indexlist=res.body.data.list
-					this.goodsLi=[...this.goodsLi,...res.body.data.list]
+					this.list=[...this.list,...res.body.data.list]
+					console.log(this.list);
 				
 				},error=>{
 					

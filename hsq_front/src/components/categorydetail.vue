@@ -55,23 +55,17 @@
 			}
 		},
 		mounted(){
-			//console.log(this.searchText);
 			this.$http.get("http://localhost:3000/listapi/itemssearch",{
 					params:{
 						searchKey:this.searchText
 					}
 					
 				}).then(res=>{
-					//console.log(111);
-					//console.log(res.body);
-//					router.push("/category/categorydetail")
+					
 					this.goodsLi=res.body.data.list
-//					this.price=res.body.data.list.map(item=>{
-//						priceFilter(item)
-//					});
 					this.price=res.body.data.list.map((item)=>priceFilter(item.price));
 					this.market_price=res.body.data.list.map((item)=>priceFilter(item.market_price));
-					console.log(this.price)
+				
 				},error=>{
 					
 				})
