@@ -15,7 +15,12 @@ import CategoryDetail2 from "./components/categorydetail2.vue";
 import CategoryDetail3 from "./components/categorydetail3.vue";
 import Search from "./components/search.vue";
 import Login from "./components/login.vue";
-
+import Location from "./components/location.vue";
+import TopicList0 from "./components/topiclist0.vue";
+import TopicList1 from "./components/topiclist1.vue";
+import TopicList2 from "./components/topiclist2.vue";
+import TopicList3 from "./components/topiclist3.vue";
+import TopicList4 from "./components/topiclist4.vue";
 Vue.use(VueRouter);
 const routes = [
 	{  
@@ -25,7 +30,14 @@ const routes = [
 		children:[
 			{path:"list",component:List},
 			{path:"detail/:id",name:"detail",component:Detail},
-			{path:"search",component:Search}
+			{path:"search",component:Search},
+			{path:"location",component:Location},
+			{path:"topiclist0",component:TopicList0},
+			{path:"topiclist1",component:TopicList0},
+			{path:"topiclist2",component:TopicList0},
+			{path:"topiclist3",component:TopicList0},
+			{path:"topiclist4",component:TopicList0}
+			
 		]
 	},
 	{

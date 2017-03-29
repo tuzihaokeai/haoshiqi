@@ -15,7 +15,13 @@ router.get('/product', function(req, res, next) {
 
     })
 });
+router.get('/topiclist', function(req, res, next) {
+    console.log(req.query) ;
+    spider("/product/topiclist?device=pc&channel=h5&swidth=1366&sheight=768&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23zt_top10%3Fchannel_id%3Dh5",function(result){
+        res.send(result)
 
+    })
+});
 
 
 module.exports = router;
