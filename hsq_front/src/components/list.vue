@@ -27,7 +27,7 @@
     			<div class="index_text" >
 				<h3 @click="handleChange(index)">{{data.name}}</h3>
 				<p @click="handleChange(index)">
-					<span class="tag" style="background: #FF5555;" v-show="show">{{discount[index]}}折</span>
+					<span class="tag" style="background: #FF5555;" :class="discount[index]==10.0?'activeclass':''">{{discount[index]}}折</span>
 				  <dfn class="index_price">¥ <span class="price_box">{{priceArr[index]}}</span></dfn>
 				  <del class="del_price">{{oldArr[index]}}</del>
 				</p>
@@ -70,6 +70,7 @@ import VueNumeric from 'vue-numeric';
 				discount:[]
 			}
 		},
+
 		methods:{
 			handelSearch(){
 				router.push("/index/search")
@@ -184,7 +185,7 @@ import VueNumeric from 'vue-numeric';
 		}),
 		this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
 			
-			//console.log(res.body.data.list)
+			console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
 			res.body.data.list.map(item=>{
 				this.name.push(item.name)
@@ -208,25 +209,19 @@ import VueNumeric from 'vue-numeric';
 				//console.log(c)
 				this.oldArr.push(c)
 			}	
-			var _this=this;	
+			
+			
 			for(var x=0;x<this.today_discount.length;x++){
 				var a=this.today_discount[x];
 				var b=a.toString();
 				var c=b.substring(0,b.length-1)+"."+b.substring(b.length-1,b.length)
 				//console.log(c)
 				this.discount.push(c)
+				
 	
 			}
-//			for(var q=0;q<this.discount.length;q++){
-//				show(q);
-//			}
-//			
-//			function show(q){
-//				if(_this.discount[q]==10.0){
-//					_this.show=false;
-//					console.log(q)
-//				}
-//			}
+			console.log(this.discount)
+			
 
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.imagepath.push(res.body.data.list[i].skuInfo.skuPic)
@@ -243,6 +238,9 @@ import VueNumeric from 'vue-numeric';
 	}
 </script>
 <style scoped>
+.activeclass{
+	display: none;
+}
 	*{
 		margin: 0;
 		padding: 0;
