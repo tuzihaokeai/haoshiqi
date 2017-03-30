@@ -36,7 +36,7 @@ import router from '../router'
 			getcity(){
 				// 使用百度地图地位模块获取位置信息
 				plus.geolocation.getCurrentPosition( function ( p ) {
-//					alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
+					alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
 					console.log(p.coords.latitude)
 					console.log(p.coords.longitude)
 					this.$http.get("http://api.map.baidu.com/geocoder?location="+p.coords.longitude+","+p.coords.latitude+"&output=json&key=28bcdd84fae25699606ffad27f8da77b").then(res=>{
