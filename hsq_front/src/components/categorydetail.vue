@@ -258,4 +258,5 @@
 	    font-size: 16px;
 	    text-align: center;
 	}
+
 </style>

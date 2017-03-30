@@ -33,10 +33,10 @@ const routes = [
 			{path:"search",component:Search},
 			{path:"location",component:Location},
 			{path:"topiclist0",component:TopicList0},
-			{path:"topiclist1",component:TopicList0},
-			{path:"topiclist2",component:TopicList0},
-			{path:"topiclist3",component:TopicList0},
-			{path:"topiclist4",component:TopicList0}
+			{path:"topiclist1",component:TopicList1},
+			{path:"topiclist2",component:TopicList2},
+			{path:"topiclist3",component:TopicList3},
+			{path:"topiclist4",component:TopicList4}
 			
 		]
 	},

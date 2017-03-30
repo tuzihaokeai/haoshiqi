@@ -3,7 +3,7 @@
 			<div class="portal-header">
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
       <div class="portal-location" @click="handleLocation">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
-    	</div>
+			</div>
     	<div class="banner"></div>
     	<div class="protal-icon">
     		<ul>
@@ -15,10 +15,10 @@
     	</div>
     	<ul class="extension-item">
     		<li><img src="../assets/1.jpg"/></li>
-    		<li><img src="../assets/2.jpg"/></li>
+    		<!--<li><img src="../assets/2.jpg"/></li>
     		<li><img src="../assets/3.jpg"/></li>
     		<li><img src="../assets/4.jpg"/></li>
-    		<li><img src="../assets/5.jpg"/></li>
+    		<li><img src="../assets/5.jpg"/></li>-->
     	</ul>
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
     	<ul class="index_list">
@@ -47,6 +47,7 @@ import Vue from 'vue'
 import router from '../router'
 import css from '../bootstrap/css/bootstrap.css';
 import VueNumeric from 'vue-numeric';
+
 
 	export default {
 		data(){
@@ -81,6 +82,7 @@ import VueNumeric from 'vue-numeric';
 			jumpUrl(index){
 				router.push(`/index/topiclist${index}`)
 			},
+			
 			loadBottom() {
 				
 				this.a=++this.a;
@@ -186,12 +188,14 @@ import VueNumeric from 'vue-numeric';
 			for(var i=0;i<res.body.data.subButtonList.length;i++){
 				this.imgpath.push(res.body.data.subButtonList[i].icon)
 			}
+		
+			
 		},error=>{
 			
 		}),
 		this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
 			
-			console.log(res.body.data.list)
+			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
 			res.body.data.list.map(item=>{
 				this.name.push(item.name)
@@ -226,7 +230,7 @@ import VueNumeric from 'vue-numeric';
 				
 	
 			}
-			console.log(this.discount)
+			//console.log(this.discount)
 			
 
 			for(var i=0;i<res.body.data.list.length;i++){
@@ -286,7 +290,7 @@ import VueNumeric from 'vue-numeric';
 	}
 	.banner{
 		background: url(../assets/banner.jpg) center no-repeat;
-		height: 210px;
+		min-height: 210px;
 		background-size: 100%;
 	}
 	.protal-icon{

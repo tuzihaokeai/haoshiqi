@@ -122,6 +122,7 @@
 				imgpath:[],
 				name:"",
 				lowest_price:"",
+				market_price:'',
 				baozhengList:[],
 				labels:{},
 				city:'',
