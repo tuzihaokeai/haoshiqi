@@ -1,6 +1,6 @@
 <template>
 	<div id="topiclist4">
-		<div class="detail_header">
+		<div class="topiclist4_header">
       		<span class="back-btn" @click="backClick()">返回</span>
   			<div class="title">
   				
@@ -18,7 +18,7 @@
 		},
 		mounted(){
 			//console.log(this.searchText);
-			this.$http.get("http://localhost:3000/homeapi/topiclist4").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/homeapi/topiclist4").then(res=>{
 				console.log(res)
 				//console.log(res.data);
 					//console.log(res.body);

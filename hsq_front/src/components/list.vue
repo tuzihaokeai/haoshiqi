@@ -61,7 +61,7 @@ import css from '../bootstrap/css/bootstrap.css';
 import VueNumeric from 'vue-numeric';
 import {Swipe,SwipeItem} from "vue-swipe";
 import Css from 'vue-swipe/dist/vue-swipe.css';
-
+import Url from "../address"
 
 	export default {
 		data(){
@@ -108,7 +108,7 @@ import Css from 'vue-swipe/dist/vue-swipe.css';
 			},
 			loadingmore(index){
 					//console.log(index)
-				this.$http.get("http://localhost:3000/homeapi/product",{
+				this.$http.get("http://"+Url.url+":3000/homeapi/product",{
 					params:{
 						num:index
 					}
@@ -171,7 +171,7 @@ import Css from 'vue-swipe/dist/vue-swipe.css';
 			addShopcar(index){
 			
 			if(Cookie.getCookie("userID")){
-				this.$http.post("http://localhost/php/addShopcar.php",{
+				this.$http.post("http://"+Url.url+"/php/addShopcar.php",{
 						username:Cookie.getCookie("userID"),
 						//shopname:,
 						goodsname:this.name[index],
@@ -196,7 +196,7 @@ import Css from 'vue-swipe/dist/vue-swipe.css';
 		},
 		mounted(){		
 			console.log(this.$route.query);
-			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/homeapi/icon").then(res=>{
 			
 			//console.log(res.body)
 			this.iconlist=res.body.data.subButtonList;
@@ -210,7 +210,7 @@ import Css from 'vue-swipe/dist/vue-swipe.css';
 		},error=>{
 			
 		}),
-		this.$http.get("http://localhost:3000/homeapi/product",{num:index}).then(res=>{
+		this.$http.get("http://"+Url.url+":3000/homeapi/product",{num:index}).then(res=>{
 			
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list

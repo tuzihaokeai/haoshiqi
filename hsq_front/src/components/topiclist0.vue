@@ -26,6 +26,7 @@
 <script>
 	import css from '../bootstrap/css/bootstrap.css';
 	import router from "../router"
+	import Url from "../address"
 	export default {
 		data(){
 			return{
@@ -40,7 +41,7 @@
 		},
 		mounted(){	
 			
-			this.$http.get("http://localhost:3000/homeapi/topiclist").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/homeapi/topiclist").then(res=>{
 			this.cardlist=res.body.data.list;
 			for(var i=0;i<res.body.data.list.length;i++){
 				this.picpath.push(res.body.data.list[i].main_pic)

@@ -13,7 +13,8 @@
 	</div>
 </template>
 <script>
-import router from '../router'	
+import router from '../router'
+	import Url from "../address"
 	export default {
 		data(){
 			return{
@@ -35,7 +36,7 @@ import router from '../router'
 		},
 		mounted(){	
 			
-			this.$http.get("http://localhost:3000/homeapi/city").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/homeapi/city").then(res=>{
 			this.citylist=res.body.data.list;
 
 			//console.log(res.body.data.list)
