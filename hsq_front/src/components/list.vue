@@ -2,11 +2,16 @@
 	<div id="list">
 			<div class="portal-header">
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
-      <div class="portal-location" @click="handleLocation">上海市<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
+      <div class="portal-location" @click="handleLocation">{{this.$route.query.id}}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
 			</div>
-    	<div class="banner"></div>
+		<swipe class="banner my-swipe" :showIndicators="true">
+		  <!--<swipe-item class="slide"><img src="../assets/banner.jpg"/></swipe-item>
+		  <swipe-item class="slide"><img src="../assets/banner2.jpg"/></swipe-item>
+		  <swipe-item class="slide"><img src="../assets/banner3.jpg"/></swipe-item>-->
+		</swipe>	
+    	
     	<div class="protal-icon">
-    		<ul>
+    		<ul >
     		<li v-for="(data,index) in iconlist" :key="index">
     			<img :src="imgpath[index]" @click="jumpUrl(index)"/>
     			<p>{{data.label}}</p>
@@ -20,8 +25,8 @@
     		<li><img src="../assets/4.jpg"/></li>
     		<li><img src="../assets/5.jpg"/></li>-->
     	</ul>
-    	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
-    	<ul class="index_list">
+    	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore" style="overflow: auto;">
+    	<ul class="index_list" >
     		<li v-for="(data,index) in indexlist" >
     			<img :src="imagepath[index]" @click="handleChange(index)"/>
     			<div class="index_text" >
@@ -47,12 +52,14 @@ import Vue from 'vue'
 import router from '../router'
 import css from '../bootstrap/css/bootstrap.css';
 import VueNumeric from 'vue-numeric';
-
-
+import { Swipe, SwipeItem } from 'vue-swipe';
+Vue.component('swipe', Swipe);
+Vue.component('swipe-item', SwipeItem);
 	export default {
 		data(){
 			return{
 				show:true,
+				swiperlist:[],
 				iconlist:[],
 				imgpath:[],
 				indexlist:[],
@@ -71,7 +78,6 @@ import VueNumeric from 'vue-numeric';
 				discount:[]
 			}
 		},
-
 		methods:{
 			handleLocation(){
 				router.push("/index/location")
@@ -93,14 +99,14 @@ import VueNumeric from 'vue-numeric';
 			  
 			},
 			loadingmore(index){
-					console.log(index)
+					//console.log(index)
 				this.$http.get("http://localhost:3000/homeapi/product",{
 					params:{
 						num:index
 					}
 				}).then(res=>{
 			
-			console.log(res.body.data.list)
+			//console.log(res.body.data.list)
 			this.indexlist=[...this.indexlist,...res.body.data.list]
 
 			//this.price=res.body.data.list.lowest_price
@@ -114,7 +120,7 @@ import VueNumeric from 'vue-numeric';
 				
 		
 			})
-			console.log(this.priceArray)
+			//console.log(this.priceArray)
 			for(var x=0;x<this.priceArray.length;x++){
 				var a=this.priceArray[x];
 				var b=a.toString();
@@ -169,7 +175,7 @@ import VueNumeric from 'vue-numeric';
 						
 				}).then(res=>{
 					
-					console.log(res)
+					//console.log(res)
 				},error=>{
 					console.log(error)
 				})
@@ -181,12 +187,15 @@ import VueNumeric from 'vue-numeric';
 
 		},
 		mounted(){		
+			console.log(this.$route.query);
 			this.$http.get("http://localhost:3000/homeapi/icon").then(res=>{
 			
 			//console.log(res.body)
 			this.iconlist=res.body.data.subButtonList;
+			
 			for(var i=0;i<res.body.data.subButtonList.length;i++){
-				this.imgpath.push(res.body.data.subButtonList[i].icon)
+				this.imgpath.push(res.body.data.subButtonList[i].icon);
+		
 			}
 		
 			
@@ -241,15 +250,17 @@ import VueNumeric from 'vue-numeric';
 		})
 
 	},
-	
-	components:{
-		VueNumeric
-	}
+  	components: {
+
+  }
 	}
 </script>
 <style scoped>
 .activeclass{
 	display: none;
+}
+.l{
+	float: left;
 }
 	*{
 		margin: 0;
@@ -288,13 +299,36 @@ import VueNumeric from 'vue-numeric';
     font-weight: 700;
     z-index: 1000
 	}
+	/*.my-swipe {
+	  height: 200px;
+	  color: #fff;
+	  font-size: 30px;
+	  text-align: center;
+	}*/
+	
+	/*.slide1 {
+	  background-color: #0089dc;
+	  color: #fff;
+	}
+	
+	.slide2 {
+	  background-color: #ffd705;
+	  color: #000;
+	}
+	
+	.slide3 {
+	  background-color: #ff2d4b;
+	  color: #fff;
+	}*/
 	.banner{
-		background: url(../assets/banner.jpg) center no-repeat;
 		min-height: 210px;
-		background-size: 100%;
+		width: 100%;
+	}
+	.banner img{
+		width: 100%;
 	}
 	.protal-icon{
-
+	clear: both;
 	}
 	.protal-icon li{
 	float: left;

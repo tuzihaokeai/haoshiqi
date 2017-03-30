@@ -6,7 +6,7 @@
 	</div>
 	<ul class="select-city">
 		<li class="city_title">定位地址</li>
-		<li class="city_text">点击获取</li>
+		<li class="city_text" @click="getcity">点击获取</li>
 		<li class="city_title">省份列表</li>
 		<li v-for="(data,index) in citylist" class="city_text" ref="city"  @click="cityClick(index)">{{data.province}}</li>
 	</ul>
@@ -26,8 +26,11 @@ import router from '../router'
 				router.go(-1)
 			},
 			cityClick(index){
-				router.push(`/index${this.$refs.city[index].innerHTML}`)
+				router.push(`/index?id=${this.$refs.city[index].innerHTML}`)
 				console.log(this.$refs.city[index].innerHTML)
+			},
+			getcity(){
+				
 			}
 		},
 		mounted(){	
