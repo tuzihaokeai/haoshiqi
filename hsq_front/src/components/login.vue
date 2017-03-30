@@ -166,7 +166,7 @@ import router from "../router"
 	#login .title{
 		width:100%;
 		height:152px;
-		background: url("//img1.haoshiqi.net/assets/hsqimg/qlogin.jpg") no-repeat center;
+		background:#ccc;
 	}
 	#login .title h3{
 		color:white;
