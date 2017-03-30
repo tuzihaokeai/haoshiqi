@@ -138,7 +138,7 @@
 		},
 		mounted(){
 			//console.log(this.$route.params);
-			this.$http.get("http://"+Url+":3000/detailapi/goodsdetail",{
+			this.$http.get("http://"+Url.url+":3000/detailapi/goodsdetail",{
 					params:{
 						goodsID:this.id
 					}
@@ -182,7 +182,7 @@
 			addShopcar(){
 			
 			if(Cookie.getCookie("userID")){
-				this.$http.post("http://"+Url+"/php/addShopcar.php",{
+				this.$http.post("http://"+Url.url+"/php/addShopcar.php",{
 						username:Cookie.getCookie("userID"),
 						shopname:this.shopname,
 						goodsname:this.name,
