@@ -43,6 +43,8 @@ import router from '../router'
 						
 							this.nowLocation=res.result.formatted_address;
 						//console.log(res.body.data.list)
+								alert(this.nowLocation)
+						
 						
 					},error=>{
 						
