@@ -19,7 +19,9 @@ import router from '../router'
 		data(){
 			return{
 				status:'',
-				citylist:[]
+				citylist:[],
+				getLatitude:"",
+				getLongitude:""
 			}
 		},
 		methods:{
@@ -31,7 +33,14 @@ import router from '../router'
 				console.log(this.$refs.city[index].innerHTML)
 			},
 			getcity(){
-				
+				// 使用百度地图地位模块获取位置信息
+				plus.geolocation.getCurrentPosition( function ( p ) {
+					alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
+					console.log(p.coords.latitude)
+					console.log(p.coords.longitude)
+				}, function ( e ) {
+					alert( "Geolocation error: " + e.message );
+				},{provider:'baidu'});
 			}
 		},
 		mounted(){	
