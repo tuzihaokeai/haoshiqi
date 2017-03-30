@@ -5,7 +5,7 @@
   			<div class="title">城市选择</div>
 	</div>
 	<ul class="select-city">
-		<li class="city_title">定位地址</li>
+		<li class="city_title">{{nowLocation}}</li>
 		<li class="city_text" @click="getcity">点击获取</li>
 		<li class="city_title">省份列表</li>
 		<li v-for="(data,index) in citylist" class="city_text" ref="city"  @click="cityClick(index)">{{data.province}}</li>
@@ -21,7 +21,8 @@ import router from '../router'
 				status:'',
 				citylist:[],
 				getLatitude:"",
-				getLongitude:""
+				getLongitude:"",
+				nowLocation:"定位地址"
 			}
 		},
 		methods:{
@@ -38,9 +39,19 @@ import router from '../router'
 					alert( "Geolocation\nLatitude:" + p.coords.latitude + "\nLongitude:" + p.coords.longitude + "\nAltitude:" + p.coords.altitude );
 					console.log(p.coords.latitude)
 					console.log(p.coords.longitude)
+					this.$http.get("http://api.map.baidu.com/geocoder?location="+p.coords.longitude+","+p.coords.latitude+"&output=json&key=28bcdd84fae25699606ffad27f8da77b").then(res=>{
+						
+							this.nowLocation=res.result.formatted_address;
+						//console.log(res.body.data.list)
+						
+					},error=>{
+						
+					})
+					
 				}, function ( e ) {
 					alert( "Geolocation error: " + e.message );
 				},{provider:'baidu'});
+				
 			}
 		},    
 		mounted(){	
