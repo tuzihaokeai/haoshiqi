@@ -80,7 +80,7 @@ import router from "../router"
 			var fmt = cmr.supportedImageFormats[0];
 			console.log("Resolution: "+res+", Format: "+fmt);
 							
-			var cmr.captureImage( function( path ){
+			cmr.captureImage( function( path ){
 				alert( "Capture image success:"+path );  
 							
 									//var a= document.getElementsByTagName("img")[0];
