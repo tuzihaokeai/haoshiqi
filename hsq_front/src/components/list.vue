@@ -8,10 +8,10 @@
     	<div class="lunbodiv">
     		 <swipe class="my-swipe" :showIndicators="true">
 			  <swipe-item class="slide">
-			  	<img src="../assets/banner.jpg"/>
+			  	<img :src="banner[0].image"/>
 			  </swipe-item>
 			  <swipe-item class="slide">
-			  	<img src="../assets/banner2.jpg"/>
+			  	<img :src="banner[1].image"/>
 			  </swipe-item>
 			  
 			</swipe>
@@ -25,7 +25,7 @@
     		</ul>
     	</div>
     	
-    	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore" style="overflow: auto;">
+    	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
     	<ul class="index_list" >
     		<li v-for="(data,index) in indexlist" >
     			<img :src="imagepath[index]" @click="handleChange(index)"/>
@@ -76,7 +76,8 @@ import Url from "../address"
 				Number:1,
 				name:[],
 				today_discount:[],
-				discount:[]
+				discount:[],
+				banner:[]
 			}
 		},
 		methods:{
@@ -196,6 +197,7 @@ import Url from "../address"
 			
 			for(var i=0;i<res.body.data.subButtonList.length;i++){
 				this.imgpath.push(res.body.data.subButtonList[i].icon);
+				this.banner.push(res.body.data.bannerList[i])
 		
 			}
 		
@@ -203,13 +205,9 @@ import Url from "../address"
 		},error=>{
 			
 		}),
-		this.$http.get("http://"+Url.url+":3000/homeapi/product",{
-					params:{
-						num:1
-					}
-				}).then(res=>{
+		this.$http.get("http://"+Url.url+":3000/homeapi/product").then(res=>{
 			
-			//console.log(res.body.data.list)
+			console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
 			res.body.data.list.map(item=>{
 				this.name.push(item.name)
