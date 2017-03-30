@@ -6,9 +6,9 @@
 			
 		</div>
 		<div class="person">
-			<div class="tel">头像</div>
+			<div class="tel" @click="changeImgClick">头像</div>
 			<span class="r">></span>
-			<img class="r" src="http://img.haoshiqi.net/avatar/avatar_default.png@120w_120h_90Q" />
+			<img class="r" :src="imgpath" />
 	
 		</div>
 		
@@ -57,7 +57,8 @@ import router from "../router"
 	export default {
 		data(){
 			return{
-				status:''
+				status:'',
+				imgpath:"http://img.haoshiqi.net/avatar/avatar_default.png@120w_120h_90Q"
 			}
 		},
 		created(){
@@ -70,6 +71,39 @@ import router from "../router"
 		methods:{
 			backClick(){
 				router.push("/wode/mine")
+			},
+			changeImgClick(){
+				
+				
+			  document.addEventListener( "plusready", onPlusReady, false );
+			    function onPlusReady() {
+					console.log("plusready");
+				}
+			    	function aaa(){
+			    	
+			    		var cmr = plus.camera.getCamera();
+							var res = cmr.supportedImageResolutions[0];
+							var fmt = cmr.supportedImageFormats[0];
+							console.log("Resolution: "+res+", Format: "+fmt);
+							cmr.captureImage( function( path ){
+									alert( "Capture image success:"+path );  
+							
+									//var a= document.getElementsByTagName("img")[0];
+									
+									plus.io.resolveLocalFileSystemURL( path,function(entry){
+										console.log(entry.toLocalURL());	
+										this.imgpath=entry.toLocalURL();
+									})
+									
+								},
+								function( error ) {
+									alert( "Capture image failed: " + error.message );
+								},
+								{resolution:res,format:fmt}
+							);
+			    	}
+			
+				
 			}
 		}
 	}
