@@ -203,7 +203,11 @@ import Url from "../address"
 		},error=>{
 			
 		}),
-		this.$http.get("http://"+Url.url+":3000/homeapi/product",{num:index}).then(res=>{
+		this.$http.get("http://"+Url.url+":3000/homeapi/product",{
+					params:{
+						num:1
+					}
+				}).then(res=>{
 			
 			//console.log(res.body.data.list)
 			this.indexlist=res.body.data.list
