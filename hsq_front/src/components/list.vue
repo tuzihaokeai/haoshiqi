@@ -4,11 +4,7 @@
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
       <div class="portal-location" @click="handleLocation">{{this.$route.query.id}}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
 			</div>
-		<!--<swipe class="my-swipe" :showIndicators="true">
-		  <swipe-item class="slide"><img src="../assets/banner.jpg"/></swipe-item>
-		  <swipe-item class="slide"><img src="../assets/banner2.jpg"/></swipe-item>
-		  <swipe-item class="slide"><img src="../assets/banner3.jpg"/></swipe-item>
-		</swipe>	-->
+		
     	<div class="lunbodiv">
     		 <swipe class="my-swipe" :showIndicators="true">
 			  <swipe-item class="slide">
@@ -28,10 +24,7 @@
     		</li>
     		</ul>
     	</div>
-    	<ul class="extension-item">
-    		<li><img src="../assets/1.jpg"/></li>
-    		
-    	</ul>
+    	
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore" style="overflow: auto;">
     	<ul class="index_list" >
     		<li v-for="(data,index) in indexlist" >
