@@ -4,12 +4,22 @@
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
       <div class="portal-location" @click="handleLocation">{{this.$route.query.id}}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
 			</div>
-		<swipe class="banner my-swipe" :showIndicators="true">
-		  <!--<swipe-item class="slide"><img src="../assets/banner.jpg"/></swipe-item>
+		<!--<swipe class="my-swipe" :showIndicators="true">
+		  <swipe-item class="slide"><img src="../assets/banner.jpg"/></swipe-item>
 		  <swipe-item class="slide"><img src="../assets/banner2.jpg"/></swipe-item>
-		  <swipe-item class="slide"><img src="../assets/banner3.jpg"/></swipe-item>-->
-		</swipe>	
-    	
+		  <swipe-item class="slide"><img src="../assets/banner3.jpg"/></swipe-item>
+		</swipe>	-->
+    	<div class="lunbodiv">
+    		 <swipe class="my-swipe" :showIndicators="true">
+			  <swipe-item class="slide">
+			  	<img src="../assets/banner.jpg"/>
+			  </swipe-item>
+			  <swipe-item class="slide">
+			  	<img src="../assets/banner2.jpg"/>
+			  </swipe-item>
+			  
+			</swipe>
+    	</div>
     	<div class="protal-icon">
     		<ul >
     		<li v-for="(data,index) in iconlist" :key="index">
@@ -20,10 +30,7 @@
     	</div>
     	<ul class="extension-item">
     		<li><img src="../assets/1.jpg"/></li>
-    		<!--<li><img src="../assets/2.jpg"/></li>
-    		<li><img src="../assets/3.jpg"/></li>
-    		<li><img src="../assets/4.jpg"/></li>
-    		<li><img src="../assets/5.jpg"/></li>-->
+    		
     	</ul>
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore" style="overflow: auto;">
     	<ul class="index_list" >
@@ -52,9 +59,10 @@ import Vue from 'vue'
 import router from '../router'
 import css from '../bootstrap/css/bootstrap.css';
 import VueNumeric from 'vue-numeric';
-import { Swipe, SwipeItem } from 'vue-swipe';
-Vue.component('swipe', Swipe);
-Vue.component('swipe-item', SwipeItem);
+import {Swipe,SwipeItem} from "vue-swipe";
+import Css from 'vue-swipe/dist/vue-swipe.css';
+
+
 	export default {
 		data(){
 			return{
@@ -250,12 +258,29 @@ Vue.component('swipe-item', SwipeItem);
 		})
 
 	},
-  	components: {
-
-  }
+  	components:{
+			"swipe":Swipe,
+			"swipe-item":SwipeItem
+		}
 	}
 </script>
 <style scoped>
+.lunbodiv{
+	height:210px;
+	width:100%;
+	
+}
+.lunbodiv swipe{
+	height:100%;
+	width:100%;
+}
+.lunbodiv swipe swipe-item{
+	height:100%;
+	width:100%;
+}
+.lunbodiv img{
+	width:100%;
+}
 .activeclass{
 	display: none;
 }
