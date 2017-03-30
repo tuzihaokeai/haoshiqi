@@ -62,8 +62,8 @@ import router from "../router"
 			}
 		},
 		created(){
-			if(Cookie.getCookie("userID")){
-				this.status=Cookie.getCookie("userID")
+			if(sessionStorage.getItem("userID")){
+				this.status=sessionStorage.getItem("userID")
 			}else{
 				
 			}
@@ -80,7 +80,7 @@ import router from "../router"
 			var fmt = cmr.supportedImageFormats[0];
 			console.log("Resolution: "+res+", Format: "+fmt);
 							
-			cmr.captureImage( function( path ){
+			var cmr.captureImage( function( path ){
 				alert( "Capture image success:"+path );  
 							
 									//var a= document.getElementsByTagName("img")[0];
