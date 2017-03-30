@@ -42,7 +42,7 @@ import router from '../router'
 					alert( "Geolocation error: " + e.message );
 				},{provider:'baidu'});
 			}
-		},
+		},    
 		mounted(){	
 			
 			this.$http.get("http://"+Url.url+":3000/homeapi/city").then(res=>{
