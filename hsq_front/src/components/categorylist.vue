@@ -26,6 +26,7 @@
 	</div>
 </template>
 <script>
+	import Url from "../address";
 	import css from '../bootstrap/css/bootstrap.css';
 	import router from "../router";
 	import Vuex from "vuex";
@@ -38,7 +39,7 @@
 			}
 		},
 		mounted(){
-			this.$http.get("http://localhost:3000/listapi/category").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/listapi/category").then(res=>{
 
 			this.categorylist=res.body.data.list;
 //			this.goodsList=res.body.data.list
@@ -57,7 +58,7 @@
 				//handleChange(goodsID){
 					//console.log(h4Name);
 					//console.log(h4Id);
-				this.$http.get("http://localhost:3000/detailapi/listsearch",{
+				this.$http.get("http://"+Url.url+":3000/detailapi/listsearch",{
 					params:{
 						nameKey:h4Name,
 						idKey:h4Id
@@ -85,7 +86,7 @@
 //				router.push("/category/search")
 				//console.log(goodsName);
 				//console.log(goodsId);
-				this.$http.get("http://localhost:3000/detailapi/listsearch",{
+				this.$http.get("http://"+Url.url+":3000/detailapi/listsearch",{
 					params:{
 						nameKey:goodsName,
 						idKey:goodsId

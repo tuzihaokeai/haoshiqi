@@ -31,6 +31,7 @@
 
 
 <script>
+import Url from "../address"
 import $ from "jquery"
 import css from '../bootstrap/css/bootstrap.css'
 import router from "../router"
@@ -70,7 +71,7 @@ import router from "../router"
 			},
 			register(){
 				$.ajax({
-					url:"http://localhost/php/register.php",
+					url:"http://"+Url.url+"/php/register.php",
 					data:{
 						tel:this.zhanghao,
 						psw:this.mima
@@ -93,7 +94,7 @@ import router from "../router"
 			login(){
 				$.ajax({
 					
-					url:"http://localhost/php/login.php",
+					url:"http://"+Url.url+"/php/login.php",
 					data:{
 						tel:this.username,
 						psw:this.password

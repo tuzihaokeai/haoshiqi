@@ -39,6 +39,7 @@
 	
 </template>
 <script>
+import Url from "../address";
 	import Vuex from "vuex"; 
 	import css from '../bootstrap/css/bootstrap.css';
 	import router from "../router"
@@ -53,7 +54,7 @@
 		},
 		mounted(){
 			//console.log(this.searchText);
-			this.$http.get("http://localhost:3000/listapi/hotsearched",{
+			this.$http.get("http://"+Url.url+":3000/listapi/hotsearched",{
 					params:{
 						hotKey:this.searchText
 					}
@@ -104,7 +105,7 @@
 			},
 			loadingMore(num){
 					//console.log(num)
-				this.$http.get("http://localhost:3000/listapi/itemssearch",{
+				this.$http.get("http://"+Url.url+":3000/listapi/itemssearch",{
 					params:{
 						searchKey:this.searchText,
 						index:num

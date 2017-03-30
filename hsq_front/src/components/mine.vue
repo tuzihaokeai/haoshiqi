@@ -72,6 +72,7 @@
 </template>
 
 <script>
+
 import css from '../bootstrap/css/bootstrap.css'
 import router from "../router"
 	export default {

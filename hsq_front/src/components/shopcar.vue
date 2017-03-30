@@ -111,12 +111,12 @@ import router from "../router"
 					})
 				    console.log(idArr)
 				   
-					this.$http.post("http://localhost/php/delShopcar.php",{
+					this.$http.post("http://"+Url.url+"/php/delShopcar.php",{
 					username:Cookie.getCookie("userID"),
 					goodsID:idArr
 					}).then(res=>{
 						console.log(res)
-						this.$http.post("http://localhost/php/getShopcar.php",{
+						this.$http.post("http://"+Url.url+"/php/getShopcar.php",{
 							username:Cookie.getCookie("userID")
 							}).then(res=>{
 								console.log(res.body)
@@ -149,7 +149,7 @@ import router from "../router"
 				data.number++
 				//console.log(this.number)
 				console.log(id)
-				this.$http.post("http://localhost/php/updateShopcar.php",{
+				this.$http.post("http://"+Url.url+"/php/updateShopcar.php",{
 					username:Cookie.getCookie("userID"),
 					goodsID:id,
 					number:data.number
@@ -164,7 +164,7 @@ import router from "../router"
 					return;
 				}else{
 					data.number--
-					this.$http.post("http://localhost/php/updateShopcar.php",{
+					this.$http.post("http://"+Url.url+"/php/updateShopcar.php",{
 					username:Cookie.getCookie("userID"),
 					goodsID:id,
 					number:data.number
@@ -243,7 +243,7 @@ import router from "../router"
 
 		created(){
 			if(Cookie.getCookie("userID")){
-				$.post("http://localhost/php/getShopcar.php",{
+				$.post("http://"+Url.url+"/php/getShopcar.php",{
 						username:Cookie.getCookie("userID"),
 				}).then(res=>{
 					var arr=JSON.parse(res);

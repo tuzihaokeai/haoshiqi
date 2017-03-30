@@ -43,7 +43,7 @@
 	</div>
 </template>
 <script>
-	
+	import Url from "../address"
 	import router from "../router"
 	export default {
 		data(){
@@ -61,7 +61,7 @@
 		},
 		
 		mounted(){
-			this.$http.get("http://localhost:3000/listapi/hotsearch").then(res=>{
+			this.$http.get("http://"+Url.url+":3000/listapi/hotsearch").then(res=>{
 
 				this.hotList=res.body.data.list;
 				
