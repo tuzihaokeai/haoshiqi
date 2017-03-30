@@ -85,8 +85,8 @@ import router from "../router"
 			
 		},
 		created(){
-			if(Cookie.getCookie("userID")){
-				this.status=Cookie.getCookie("userID")
+			if(sessionStorage.getItem("userID")){
+				this.status=sessionStorage.getItem("userID")
 			}else{
 				this.status="未登录"
 			}

@@ -33,7 +33,7 @@ router.get('/goodsdetail', function(req, res, next) {
 
 router.get('/listsearch', function(req, res, next) {
 
-    console.log(req.query)
+    //console.log(req.query)
 
     spider("/product/itemssearch?device=android&channel=h5&swidth=360&sheight=640&zoneId=857&v=2.1.3&terminal=wap&page=http%3A%2F%2Fm.haoshiqi.net%2F%23list%3Fcategoryname%3D"+encodeURIComponent(req.query.nameKey)+"%26categoryid%3D"+req.query.idKey+"%26channel_id%3Dh5&categoryId="+req.query.idKey+"&category="+encodeURIComponent(req.query.nameKey)+"&needPagination=1&pageNum=1&pageLimit=20",function(result){
 

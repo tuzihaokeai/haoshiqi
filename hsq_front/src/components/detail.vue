@@ -181,9 +181,9 @@
 			},
 			addShopcar(){
 			
-			if(Cookie.getCookie("userID")){
+			if(sessionStorage.getItem("userID")){
 				this.$http.post("http://"+Url.url+"/php/addShopcar.php",{
-						username:Cookie.getCookie("userID"),
+						username:sessionStorage.getItem("userID"),
 						shopname:this.shopname,
 						goodsname:this.name,
 						newprice:this.lowest_price,

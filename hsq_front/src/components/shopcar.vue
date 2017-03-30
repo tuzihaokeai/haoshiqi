@@ -117,7 +117,7 @@ import router from "../router"
 					}).then(res=>{
 						console.log(res)
 						this.$http.post("http://"+Url.url+"/php/getShopcar.php",{
-							username:Cookie.getCookie("userID")
+							username:sessionStorage.getItem("userID")
 							}).then(res=>{
 								console.log(res.body)
 								var newRes= [];
@@ -150,7 +150,7 @@ import router from "../router"
 				//console.log(this.number)
 				console.log(id)
 				this.$http.post("http://"+Url.url+"/php/updateShopcar.php",{
-					username:Cookie.getCookie("userID"),
+					username:sessionStorage.getItem("userID"),
 					goodsID:id,
 					number:data.number
 				}).then(res=>{
@@ -165,7 +165,7 @@ import router from "../router"
 				}else{
 					data.number--
 					this.$http.post("http://"+Url.url+"/php/updateShopcar.php",{
-					username:Cookie.getCookie("userID"),
+					username:sessionStorage.getItem("userID"),
 					goodsID:id,
 					number:data.number
 				}).then(res=>{
@@ -244,7 +244,7 @@ import router from "../router"
 		created(){
 			if(Cookie.getCookie("userID")){
 				$.post("http://"+Url.url+"/php/getShopcar.php",{
-						username:Cookie.getCookie("userID"),
+						username:sessionStorage.getItem("userID"),
 				}).then(res=>{
 					var arr=JSON.parse(res);
 					arr.map((item)=>{

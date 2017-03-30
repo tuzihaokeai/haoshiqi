@@ -105,7 +105,7 @@ import router from "../router"
 						if(res==0){
 							console.log("iii")
 						}else{
-							Cookie.setCookie("userID",this.username,5)
+							sessionStorage.setItem("userID",this.username)
 							router.push("/index/list")
 							
 						}
