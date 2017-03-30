@@ -232,4 +232,10 @@
 	    color: #b4b4b4;
 	    font-weight: 100;
 	}
+	.show{
+		display:block;
+	}
+	.hide{
+		display: none;
+	}
 </style>
