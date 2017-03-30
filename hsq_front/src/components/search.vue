@@ -28,7 +28,8 @@
 				   </ul>
 			      	 	
 			 
-			   	   <li class="last" v-show="isshow">暂无搜索历史</li>
+			   	   <li class="last" :class="isshow==true?'show':'hide'">暂无搜索历史</li>
+			   	              
 			      </ul>
 			  </div>
 			  
@@ -57,6 +58,7 @@
 				itemList:"",
 				historyList:[],
 				a:""
+				
 			}
 		},
 		
@@ -91,7 +93,11 @@
 					this.infoList=[...JSON.parse(localStorage.getItem("info"))]
 					localStorage.setItem("info",JSON.stringify([...this.infoList,text]));
 				}
-				
+				if(this.historyList.lenght==0){
+					this.isshow=true;
+				}{
+					this.isshow=false;
+				}
 				
 				router.push(`/category/categorydetail/${text}`)
 
