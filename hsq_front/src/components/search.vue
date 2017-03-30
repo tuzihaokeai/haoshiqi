@@ -55,30 +55,27 @@
 				infoList:[],
 				isshow:true,
 				itemList:"",
-				historyList:["蛋糕","巧克力","薯片"]
+				historyList:[],
+				a:""
 			}
 		},
+		
 		mounted(){
 			this.$http.get("http://localhost:3000/listapi/hotsearch").then(res=>{
 
 				this.hotList=res.body.data.list;
-////			this.goodsList=res.body.data.list
-//			console.log(this.categorylist);
-//			for(var i=0;i<res.body.data.list.length;i++){
-//				this.goodsList.push(res.body.data.list[i].subCategories)
-//			}
-				console.log(res.body.data.list)
 				
 			},error=>{
 				
 			})
 			
-//			this.historyList=[...this.historyList,...this.infoList]
+			//console.log(JSON.parse(localStorage.getItem("info")))
+			this.historyList=[...JSON.parse(localStorage.getItem("info"))]
+				//console.log(this.historyList)
 			
-//			this.historyList .push([...JSON.parse(localStorage.getItem("info"))]);
-	
-			console.log(this.historyList)
-		},  
+			
+		}, 
+		
 		methods:{
 			backClick(){
 				router.go(-1)
@@ -87,35 +84,27 @@
 				
 			},
 			searchClick(text){
-//					console.log(text)
-//				this.infoList=[...this.infoList,localStorage.setItem("info",JSON.stringify([text]))]
-				localStorage.setItem("info",JSON.stringify([text]))
-//				this.infoList=localStorage.getItem("info")
-//				this.infoList=[...this.infoList,localStorage.getItem("info")]
-				this.infoList.push(JSON.parse(localStorage.getItem("info")))
-				console.log(this.infoList);
-//				this.isshow=false;
-//				console.log(this.isshow);
-//			    this.itemList=JSON.parse(localStorage.getItem("info"));
-//				console.log(this.itemList);
+
+				if(!localStorage.getItem("info")){
+					localStorage.setItem("info",JSON.stringify([text]));
+				}else{
+					this.infoList=[...JSON.parse(localStorage.getItem("info"))]
+					localStorage.setItem("info",JSON.stringify([...this.infoList,text]));
+				}
 				
-//				document.cookie="item:text";
-//				console.log(document.cookie);
 				
 				router.push(`/category/categorydetail/${text}`)
 
 			},
 			hotClick(clickvalue){
-				console.log(clickvalue);
+				//console.log(clickvalue);
 				
 				router.push(`/category/categorydetail/${clickvalue}`)
 			}
-		}
+		},
+
 	}
-//	searchtag%3D%E8%8A%92%E6%9E%9C%26backLevel%3D-2%26channel_id%3Dh5&searchTag=%E8%8A%92%E6%9E%9C&q=%E8%8A%92%E6%9E%9C&
-//	searchtag%3D%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F%26backLevel%3D-2%26channel_id%3Dh5&searchTag=%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F&q=%E6%8F%90%E6%8B%89%E7%B1%B3%E8%8B%8F&
-//	searchtag=芒果&backLevel=-2&channel_id=h5&searchTag=芒果&q=芒果&"
-//	searchtag=提拉米苏&backLevel=-2&channel_id=h5&searchTag=提拉米苏&q=提拉米苏&"
+
 </script>
 <style scoped>
 	.detail_header{

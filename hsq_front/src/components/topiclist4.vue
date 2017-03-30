@@ -1,6 +1,11 @@
 <template>
 	<div id="topiclist4">
-
+		<div class="detail_header">
+      		<span class="back-btn" @click="backClick()">返回</span>
+  			<div class="title">
+  				
+  			</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -11,8 +16,25 @@
 				status:''
 			}
 		},
+		mounted(){
+			//console.log(this.searchText);
+			this.$http.get("http://localhost:3000/homeapi/topiclist4").then(res=>{
+				console.log(res)
+				//console.log(res.data);
+					//console.log(res.body);
+//					router.push("/category/categorydetail")
+					//this.goodsLi=res.body.data.list
+				},error=>{
+					
+				})
+				
+				
+				
+		},
 		methods:{
-			
+			backClick(){
+				router.go(-1)
+			},
 		}
 	}
 </script>
