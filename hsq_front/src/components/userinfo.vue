@@ -74,34 +74,28 @@ import router from "../router"
 			},
 			changeImgClick(){
 				
-				
-			  document.addEventListener( "plusready", onPlusReady, false );
-			    function onPlusReady() {
-					console.log("plusready");
-				}
-			    	function aaa(){
-			    	
-			    		var cmr = plus.camera.getCamera();
-							var res = cmr.supportedImageResolutions[0];
-							var fmt = cmr.supportedImageFormats[0];
-							console.log("Resolution: "+res+", Format: "+fmt);
-							cmr.captureImage( function( path ){
-									alert( "Capture image success:"+path );  
+				var _this=this;
+			var cmr = plus.camera.getCamera();
+			var res = cmr.supportedImageResolutions[0];
+			var fmt = cmr.supportedImageFormats[0];
+			console.log("Resolution: "+res+", Format: "+fmt);
+							
+			var cmr.captureImage( function( path ){
+				alert( "Capture image success:"+path );  
 							
 									//var a= document.getElementsByTagName("img")[0];
 									
-									plus.io.resolveLocalFileSystemURL( path,function(entry){
-										console.log(entry.toLocalURL());	
-										this.imgpath=entry.toLocalURL();
-									})
+				plus.io.resolveLocalFileSystemURL( path,function(entry){
+						console.log(entry.toLocalURL());	
+						_this.imgpath=entry.toLocalURL();
+				})
 									
-								},
-								function( error ) {
+			},
+				function( error ) {
 									alert( "Capture image failed: " + error.message );
-								},
-								{resolution:res,format:fmt}
-							);
-			    	}
+				},
+				{resolution:res,format:fmt}
+			);
 			
 				
 			}

@@ -40,8 +40,8 @@ import router from '../router'
 					console.log(p.coords.latitude)
 					console.log(p.coords.longitude)
 					this.$http.get("http://api.map.baidu.com/geocoder?location="+p.coords.longitude+","+p.coords.latitude+"&output=json&key=28bcdd84fae25699606ffad27f8da77b").then(res=>{
-						
-							this.nowLocation=res.result.formatted_address;
+							
+							this.nowLocation=res.body.result.formatted_address;
 						//console.log(res.body.data.list)
 								alert(this.nowLocation)
 						
