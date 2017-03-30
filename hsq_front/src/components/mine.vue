@@ -94,7 +94,7 @@ import router from "../router"
 		methods:{
 			changePage(){
 				console.log("pp")
-				if(Cookie.getCookie("userID")){
+				if(sessionStorage.getItem("userID")){
 					router.push("/wode/userinfo")
 				}else{
 					router.push("/wode/login")

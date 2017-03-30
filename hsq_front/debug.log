@@ -1,0 +1,27 @@
+[0330/173542:ERROR:gpu_info_collector_win.cc(103)] Can't retrieve a valid WinSAT assessment.
+[0330/173543:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173544:ERROR:command_buffer_proxy_impl.cc(156)] Failed to initialize command buffer service.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(394)] CommandBufferProxy::Initialize failed.
+[0330/173544:ERROR:webgraphicscontext3d_command_buffer_impl.cc(413)] Failed to initialize command buffer.
+[0330/173600:ERROR:ipc_channel_win.cc(132)] pipe error: 109

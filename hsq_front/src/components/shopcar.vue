@@ -112,7 +112,7 @@ import router from "../router"
 				    console.log(idArr)
 				   
 					this.$http.post("http://"+Url.url+"/php/delShopcar.php",{
-					username:Cookie.getCookie("userID"),
+					username:sessionStorage.getItem("userID"),
 					goodsID:idArr
 					}).then(res=>{
 						console.log(res)
@@ -242,7 +242,7 @@ import router from "../router"
             },
 
 		created(){
-			if(Cookie.getCookie("userID")){
+			if(sessionStorage.getItem("userID")){
 				$.post("http://"+Url.url+"/php/getShopcar.php",{
 						username:sessionStorage.getItem("userID"),
 				}).then(res=>{
