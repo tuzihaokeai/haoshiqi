@@ -2,7 +2,7 @@
 	<div id="list">
 			<div class="portal-header">
       <span  class="portal-logo"></span><input type="text" placeholder="搜索您想要找的商品" class="search" @click="handelSearch()"/>
-      <div class="portal-location" @click="handleLocation">{{this.$route.query.id}}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
+      <div class="portal-location" @click="handleLocation">{{this.$route.query.id?'this.$route.query.id':'上海市'}}<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
 			</div>
 		
     	<div class="lunbodiv">

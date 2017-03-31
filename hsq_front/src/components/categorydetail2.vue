@@ -46,34 +46,40 @@
 	import Url from "../address";
 	import Vuex from "vuex"; 
 	import css from '../bootstrap/css/bootstrap.css';
-	import router from "../router"
+	import router from "../router";
+	import priceFilter from "../priceFilter";
 	export default {
 		data(){
 			return{
 				searchText:this.$route.params.searchItem,
 				goodsLi:[],
 				imagepath:[],
-				a:1
+				a:1,
+				price:[]
 			}
 		},
 		mounted(){
 			//console.log(this.searchText);
-//			this.$http.get("http://localhost:3000/listapi/itemssearch",{
+//			this.$http.get("http://"+Url.url+":3000/listapi/itemssearch",{
 //					params:{
 //						searchKey:this.searchText
 //					}
 //					
 //				}).then(res=>{
-//					//console.log(111);
-//					//console.log(res.body);
+//					console.log(111);
+//					console.log(res);
 ////					router.push("/category/categorydetail")
+//					
 //					this.goodsLi=res.body.data.list
+//					this.price=res.body.data.list.map((item)=>priceFilter(item.price));
+//					console.log(this.price);
+//					this.market_price=res.body.data.list.map((item)=>priceFilter(item.market_price));
 //				},error=>{
 //					
 //				})
 //				
-//				
-//				
+				
+				
 		},
 		computed:{
 //			listtemplate:function(){

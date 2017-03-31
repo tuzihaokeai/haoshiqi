@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve('../../hsq/dist'),
+    path: path.resolve('../../HSQ_App/dist'),
     publicPath: 'dist/',
     filename: 'build.js'
   },

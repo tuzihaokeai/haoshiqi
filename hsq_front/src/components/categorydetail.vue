@@ -62,9 +62,10 @@
 					}
 					
 				}).then(res=>{
-					
+					console.log(res);
 					this.goodsLi=res.body.data.list
 					this.price=res.body.data.list.map((item)=>priceFilter(item.price));
+					console.log(this.price);
 					this.market_price=res.body.data.list.map((item)=>priceFilter(item.market_price));
 				
 				},error=>{
