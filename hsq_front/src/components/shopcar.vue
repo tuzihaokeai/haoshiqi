@@ -100,6 +100,9 @@ import router from "../router"
 					
 					var newArr= []
 					console.log(this.datalist)
+//					for(){
+//						
+//					}
 					this.datalist.forEach((item)=>{
 						 newArr =[...newArr,...item.children.filter(obj=>obj.isChecked==true)];
                 		
@@ -204,10 +207,24 @@ import router from "../router"
 			
 			
 			handleChange(data){
+				if(data.isChecked==true){
+					data.isChecked=false
+					for(var i=0;i<data.children.length;i++){
+						data.children[i].isChecked = data.isChecked;
+						console.log(data.isChecked);
+					}
+				}else{
+					data.isChecked=true
+					for(var i=0;i<data.children.length;i++){
+						data.children[i].isChecked = data.isChecked;
+						console.log(data.isChecked);
+					}
+				}
 				
-				data.children.forEach((item)=>{
-					item.isChecked = data.isChecked;
-				})
+				
+//				data.children.forEach((item)=>{
+//					item.isChecked = data.isChecked;
+//				})
 				
 				//console.log(data.children);
 			},
@@ -215,7 +232,14 @@ import router from "../router"
 			handleChildChange(data){
 				var isChecked = data.children.every(item=>item.isChecked==true);
 				
+				for(var i=0;i<data.children.length;i++){
+					if(data.children[i].isChecked){
+						
+					}
+				}
+				
 				data.isChecked = isChecked;
+				console.log(isChecked)
 			}
 		},	
 		
@@ -256,26 +280,29 @@ import router from "../router"
 					var newres=[
 					
 					];
-//					var shopnameArr = []
-//					for(var i=0;i<arr.length;i++){
-//						shopnameArr.push(arr[i].shopname)
-//						var quchonghouArr=[]
-//						var json={};
-//						for(var j=0;j<shopnameArr.length;j++){
-//							if(!json[shopnameArr[j]]){
-//								quchonghouArr.push(shopnameArr[j]);
-//								json[shopnameArr[j]]=1
-//							}
-//						}
-//						
+					var shopnameArr = []
+					for(var i=0;i<arr.length;i++){
+						shopnameArr.push(arr[i].shopname)
+						var quchonghouArr=[]
+						var json={};
+						for(var j=0;j<shopnameArr.length;j++){
+							if(!json[shopnameArr[j]]){
+								quchonghouArr.push(shopnameArr[j]);
+								json[shopnameArr[j]]=1
+							}
+						}
+						
+					}
+					console.log(shopnameArr)
+
+//				    var quchonghouArr = arr.map(item=>item.shopname);
+//					var set = new Set(quchonghouArr);
+//					quchonghouArr = Array.from(set);
+
+
+//					for(var i=0;i<quchonghouArr.lenght;i++){
+//						newres.push({shopname:quchonghouArr[i],isChecked:false,children:arr.filter(obj=>obj.shopname==quchonghouArr[i])});
 //					}
-//					console.log(shopnameArr)
-
-				    var quchonghouArr = arr.map(item=>item.shopname);
-					var set = new Set(quchonghouArr);
-					quchonghouArr = Array.from(set);
-
-					
 					quchonghouArr.forEach((item,index)=>{
 						newres.push({shopname:item,isChecked:false,children:arr.filter(obj=>obj.shopname==item)});
 					})

@@ -91,10 +91,8 @@ import router from "../router"
 						_this.imgpath=entry.toLocalURL();
 				})
 									
-			},
-				function( error ) {
-									alert( "Capture image failed: " + error.message );
-				},
+			},function( error ) {
+									alert( "Capture image failed: " + error.message );},
 				{resolution:res,format:fmt}
 			);
 			

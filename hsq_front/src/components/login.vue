@@ -32,7 +32,7 @@
 
 <script>
 import Url from "../address"
-import $ from "jquery"
+
 import css from '../bootstrap/css/bootstrap.css'
 import router from "../router"
 	export default {
@@ -70,38 +70,56 @@ import router from "../router"
 				router.push("/wode/mine")
 			},
 			register(){
-				$.ajax({
-					url:"http://"+Url.url+"/php/register.php",
-					data:{
-						tel:this.zhanghao,
-						psw:this.mima
-					},
-					type:"post",
-					success:(res)=>{
-						console.log(res)
-						
-					}
-				})
-//				this.$http.post("http://localhost/php/register.php",{
+//				$.ajax({
+//					url:"http://"+Url.url+"/php/register.php",
+//					data:{
 //						tel:this.zhanghao,
-//						psw:this.mima					
-//				}).then(res=>{
-//					console.log(res)
-//				},error=>{
-//					console.log(error)
+//						psw:this.mima
+//					},
+//					type:"post",
+//					success:(res)=>{
+//						console.log(res)
+//						
+//					}
 //				})
+				this.$http.post("http://"+Url.url+"/php/register.php",{
+						tel:this.zhanghao,
+						psw:this.mima					
+				}).then(res=>{
+					console.log(res)
+				},error=>{
+					console.log(error)
+				})
 			},
 			login(){
-				$.ajax({
-					
-					url:"http://"+Url.url+"/php/login.php",
-					data:{
+//				$.ajax({
+//					
+//					url:"http://"+Url.url+"/php/login.php",
+//					data:{
+//						tel:this.username,
+//						psw:this.password
+//					},
+//					type:"post",
+//					success:(res)=>{
+//						console.log(res)
+//						if(res==0){
+//							console.log("iii")
+//						}else{
+//							sessionStorage.setItem("userID",this.username)
+//							router.push("/index/list")
+//							
+//						}
+//						
+//					},
+//					error:(res)=>{
+//						
+//					}
+//				})
+				this.$http.post("http://"+Url.url+"/php/login.php",{
 						tel:this.username,
-						psw:this.password
-					},
-					type:"post",
-					success:(res)=>{
-						console.log(res)
+						psw:this.password					
+				}).then(res=>{
+					console.log(res)
 						if(res==0){
 							console.log("iii")
 						}else{
@@ -109,20 +127,9 @@ import router from "../router"
 							router.push("/index/list")
 							
 						}
-						
-					},
-					error:(res)=>{
-						
-					}
+				},error=>{
+					console.log(error)
 				})
-//				this.$http.post("http://localhost/php/login.php",{
-//						tel:this.username,
-//						psw:this.password					
-//				}).then(res=>{
-//					console.log(res)
-//				},error=>{
-//					console.log(error)
-//				})
 		},
 
     	
