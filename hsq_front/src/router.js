@@ -12,7 +12,7 @@ import Detail from "./components/detail.vue";
 import CategoryList from "./components/categorylist.vue";
 import CategoryDetail from "./components/categorydetail.vue";
 import CategoryDetail2 from "./components/categorydetail2.vue";
-import CategoryDetail3 from "./components/categorydetail3.vue";
+
 import Search from "./components/search.vue";
 import Login from "./components/login.vue";
 import Location from "./components/location.vue";
@@ -47,7 +47,7 @@ const routes = [
 		children:[
 			{path:"categorydetail/:searchItem",name:"categorydetail",component:CategoryDetail},
 			{path:"categorydetail2",component:CategoryDetail2},
-			{path:"categorydetail3",component:CategoryDetail3},
+		
 			{path:"categorylist",component:CategoryList},
 			{path:"detail/:id",name:"detail",component:Detail},
 			{path:"search",component:Search}

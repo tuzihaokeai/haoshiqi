@@ -207,25 +207,26 @@ import router from "../router"
 			
 			
 			handleChange(data){
-				if(data.isChecked==true){
-					data.isChecked=false
-					for(var i=0;i<data.children.length;i++){
-						data.children[i].isChecked = data.isChecked;
-						console.log(data.isChecked);
-					}
-				}else{
-					data.isChecked=true
-					for(var i=0;i<data.children.length;i++){
-						data.children[i].isChecked = data.isChecked;
-						console.log(data.isChecked);
-					}
-				}
+				console.log(data.isChecked)
+//				if(data.isChecked==true){
+//					data.isChecked=false
+//					for(var i=0;i<data.children.length;i++){
+//						data.children[i].isChecked = data.isChecked;
+//						console.log(data.isChecked);
+//					}
+//				}else{
+//					data.isChecked=true
+//					for(var i=0;i<data.children.length;i++){
+//						data.children[i].isChecked = data.isChecked;
+//						console.log(data.isChecked);
+//					}
+//				}
 				
 				
-//				data.children.forEach((item)=>{
-//					item.isChecked = data.isChecked;
-//				})
-				
+				data.children.forEach((item)=>{
+					item.isChecked = data.isChecked;
+				})
+//				
 				//console.log(data.children);
 			},
 			
