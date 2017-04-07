@@ -12,8 +12,7 @@ g <template>
 			  </swipe-item>
 			  <swipe-item class="slide">
 			  	<img :src="banner[1].image"/>
-			  </swipe-item>
-			  
+			  </swipe-item>		  
 			</swipe>
     	</div>
     	<div class="protal-icon">
@@ -26,7 +25,7 @@ g <template>
     	</div>
     	
     	<mt-loadmore :bottom-method="loadBottom"  ref="loadmore">
-    	<ul class="index_list" >
+    	<ul class="index_list"  style="clear: both;">
     		<li v-for="(data,index) in indexlist" >
     			<img :src="imagepath[index]" @click="handleChange(index)"/>
     			<div class="index_text" >
@@ -352,7 +351,7 @@ import Url from "../address"
 	}
 	.protal-icon li{
 	float: left;
-    width: 20%;
+    width: 25%;
     padding: 10px 0;
     list-style: none;
     text-align: center;
@@ -364,7 +363,7 @@ import Url from "../address"
 		display: block;
 	border: 0;
     position: relative;
-    left: 22%;
+    left: 28%;
     margin-bottom: 10px;
 	}
 	.extension-item li img{
